@@ -23,11 +23,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User register(RUser rUser) {
 		User user = new User();
-		user.setUserId(UUID.randomUUID().toString());
+		/*user.setUserId(UUID.randomUUID().toString());
 		
 		user.setPassword(rUser.getPassword());
 		user.setUsername(rUser.getUsername());
-		baseDao.save(user);
+		baseDao.save(user);*/
 		
 		return user;
 	}
