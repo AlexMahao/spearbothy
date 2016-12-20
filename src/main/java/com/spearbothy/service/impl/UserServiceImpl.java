@@ -13,7 +13,7 @@ import com.spearbothy.model.User;
 import com.spearbothy.receive.RUser;
 import com.spearbothy.service.UserService;
 
-
+@Transactional
 @Service(value="userService")
 public class UserServiceImpl implements UserService {
 	

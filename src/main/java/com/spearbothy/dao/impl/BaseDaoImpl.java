@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.spearbothy.dao.BaseDao;
 
-@Transactional
+
 @Repository("baseDao")
 @SuppressWarnings("all")
 public class BaseDaoImpl<T> implements BaseDao<T> {
