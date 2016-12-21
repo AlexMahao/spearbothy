@@ -27,8 +27,12 @@
 	<!-- 对于WebLogic,Orion,OC4J此属性应该设置成true -->
 	<constant name="struts.dispatcher.parametersWorkaround" value="false" />
 
+	<constant name="struts.ui.theme" value="simple"></constant>
+	<constant name="struts.ui.templateDir" value="template" />
+	<constant name="struts.ui.templateSuffix" value="ftl" />
+
 	<package name="basePackage" extends="struts-default">
-		
+
 	</package>
 
 </struts>

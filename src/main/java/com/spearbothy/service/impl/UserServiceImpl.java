@@ -2,13 +2,12 @@ package com.spearbothy.service.impl;
 
 import java.util.UUID;
 
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.spearbothy.dao.BaseDao;
+import com.spearbothy.dao.impl.UserDao;
 import com.spearbothy.model.User;
 import com.spearbothy.receive.RUser;
 import com.spearbothy.service.UserService;
@@ -18,17 +17,16 @@ import com.spearbothy.service.UserService;
 public class UserServiceImpl implements UserService {
 	
 	@Resource
-	private BaseDao<User> baseDao;
+	private UserDao userDao;
 
 	@Override
 	public User register(RUser rUser) {
 		User user = new User();
-		/*user.setUserId(UUID.randomUUID().toString());
-		
+		user.setId(UUID.randomUUID().toString());
+		user.setName(rUser.getUsername());
 		user.setPassword(rUser.getPassword());
-		user.setUsername(rUser.getUsername());
-		baseDao.save(user);*/
-		
+		user.setEmail(rUser.getEmail());
+		userDao.save(user);
 		return user;
 	}
 

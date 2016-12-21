@@ -7,8 +7,7 @@
 <title>矛屋</title>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/base.css" />
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/index.css" />
+
 </head>
 <body>
 	<%@include file="header.jsp"%>
