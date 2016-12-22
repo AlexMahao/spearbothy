@@ -19,6 +19,8 @@ import com.opensymphony.xwork2.ModelDriven;
 import com.spearbothy.exception.BaseException;
 import com.spearbothy.model.User;
 import com.spearbothy.receive.RUser;
+import com.spearbothy.response.Code;
+import com.spearbothy.response.ResultResponse;
 import com.spearbothy.service.UserService;
 
 public class UserAction extends BaseAction implements ModelDriven<RUser> {
@@ -36,29 +38,63 @@ public class UserAction extends BaseAction implements ModelDriven<RUser> {
 	@Resource
 	private UserService userService;
 
-	@Action(value = "register", results = { @Result(name = "error", location = "/WEB-INF/pages/register.jsp"),
-			@Result(name = "success", location = "ui_index", type = "redirect") })
-	public String register() {
+	@Action(value = "register")
+	public void register() {
+
+		ResultResponse<User> result = new ResultResponse<>();
+
 		if (StringUtils.isEmpty(mRuser.getUsername()) || StringUtils.isEmpty(mRuser.getEmail())
 				|| StringUtils.isEmpty(mRuser.getPassword())) {
 			getRequest().put("msg", "信息填写不完整");
-			return "error";
+			result.setCode(Code.TOAST_MESSAGE);
+			result.setMsg("信息填写不完整");
+
+		} else {
+			try {
+				User user = userService.register(mRuser);
+				HashMap<String, String> map = new HashMap<>();
+				map.put("id", user.getId());
+				map.put("name", user.getName());
+				Cookie cookie = new Cookie("user", URLEncoder.encode(JSON.toJSONString(map), "UTF-8"));
+				cookie.setMaxAge(7 * 24 * 60 * 60);
+				ServletActionContext.getResponse().addCookie(cookie);
+				result.setCode(Code.SUCCESS);
+				result.setData(user);
+				result.setMsg("成功");
+				
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			} catch (BaseException e) {
+				result.setCode(Code.TOAST_MESSAGE);
+				result.setMsg(e.getMessage());
+			}
 		}
-		try {
-			User user = userService.register(mRuser);
-			HashMap<String, String> map = new HashMap<>();
-			map.put("id", user.getId());
-			map.put("name", user.getName());
-			Cookie cookie = new Cookie("user", URLEncoder.encode(JSON.toJSONString(map), "UTF-8"));
-			cookie.setMaxAge(7 * 24 * 60 * 60);
-			ServletActionContext.getResponse().addCookie(cookie);
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		} catch (BaseException e) {
-			getRequest().put("msg", e.getMessage());
-			return "error";
-		}
-		return "success";
+		// 回写数据
+		writeJson(result);
 	}
 
+	
+	@Action("login")
+	public void login(){
+		ResultResponse<User> result = new ResultResponse<>();
+		if (StringUtils.isEmpty(mRuser.getUsername())|| StringUtils.isEmpty(mRuser.getPassword())) {
+			getRequest().put("msg", "信息填写不完整");
+			result.setCode(Code.TOAST_MESSAGE);
+			result.setMsg("信息填写不完整");
+
+		} else{
+			try {
+				User user = userService.login(mRuser);
+				result.setCode(Code.SUCCESS);
+				result.setData(user);
+				result.setMsg("成功");
+			} catch (BaseException e) {
+				result.setCode(Code.TOAST_MESSAGE);
+				result.setMsg(e.getMessage());
+			}
+		}
+		
+		writeJson(result);
+	}
+	
 }

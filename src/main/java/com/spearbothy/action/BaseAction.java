@@ -27,6 +27,7 @@ public class BaseAction extends ActionSupport implements RequestAware, SessionAw
 			String json = JSON.toJSONStringWithDateFormat(object, "yyyy-MM-dd HH:mm:ss");
 			ServletActionContext.getResponse().setContentType("text/html;charset=utf-8");
 			ServletActionContext.getResponse().getWriter().write(json);
+			System.out.println("======服务器响应数据=====\n"+json+"\n==========\n");
 			ServletActionContext.getResponse().getWriter().flush();
 			ServletActionContext.getResponse().getWriter().close();
 		} catch (IOException e) {

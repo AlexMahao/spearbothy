@@ -6,7 +6,7 @@ package com.spearbothy.response;
  * @author alex_mahao
  * @param <T>
  */
-public class Response<T> {
+public class ResultResponse<T> {
 	
 	private String code;
 	

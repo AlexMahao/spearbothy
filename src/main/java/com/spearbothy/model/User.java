@@ -134,6 +134,12 @@ public class User implements Serializable {
 		this.breasts = breasts;
 	}
 
-	
-	
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", password=" + password + ", email=" + email + ", registerTime="
+				+ registerTime + ", books=" + books + ", resources=" + resources + ", breasts=" + breasts
+				+ ", comments=" + comments + ", messages=" + messages + "]";
+	}
+
+
 }

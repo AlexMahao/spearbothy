@@ -46,6 +46,15 @@ public class UserServiceImpl implements UserService {
 		return user;
 	}
 
+	@Override
+	public User login(RUser mRuser) throws BaseException {
+		User user = userDao.getUserByNameAndPassword(mRuser.getUsername(),MD5Util.toMD5(mRuser.getPassword()));
+		if(user==null){
+			throw new BaseException("账户或者密码错误");
+		}
+		return user;
+	}
+
 	
 
 	

@@ -17,7 +17,6 @@
 <script type="text/javascript">
 	$("document").ready(function(){
 		$cookie = $.cookie("user");
-		alert(decodeURI($cookie));
 		if($cookie==""||$cookie==null){
 			$(".header_login").html("<a href='ui_login'>登陆</a> <a href='ui_register'>注册</a>")
 		}else{

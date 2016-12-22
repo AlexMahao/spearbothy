@@ -10,43 +10,47 @@
 <link rel="stylesheet" type="text/css" href="css/register.css" />
 <script type="text/javascript" src="js/jquery-1.8.3.js"></script>
 <script type="text/javascript" src="js/alert.js"></script>
+<script type="text/javascript" src="js/base.js"></script>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
 <script type="text/javascript">
 
-	$("document").ready(function(){
-		//获取request中的值，并进行弹窗
-		var message="${request.msg}";
-		if(!message==""){
-			$.alert(message);
-			
-		}
-		
-	})
-
 	function checkForm() {
-		if($("#username").val()==""){
+		
+		var $username = $("#username").val();
+		var $email = $("#email").val();
+		var $password = $("#password").val();
+		var $repassword = $("#repassword").val(); 
+		
+		if($username==""){
 			$.alert("用户名不能为空");
-			return false;
+			return;
 		}
 		var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 		
-		if(!filter.test($("#email").val())){
+		if(!filter.test($email)){
 			$.alert("请输入符合格式的邮箱地址");
-			return false;
+			return;
 		}
 		
-		password = $("#password").val();
-		repassword = $("#repassword").val(); 
-		if(password==""||password==null||repassword==""||repassword==null){
+		
+		if($password==""||$password==null||$repassword==""||$repassword==null){
 			$.alert("请输入密码或重复输入");
-			return false;
+			return;
 		}
-		if(password!=repassword){
+		if($password!=$repassword){
 			$.alert("两次密码输入不一致");
-			return false;
+			return;
 		}
 		
-		return true;
-		
+		 $.post("register",$("form:first").serialize(),function(data){
+			var result = JSON.parse(data);
+			if(result.code==code_success){
+				$.cookie("user",encodeURI(JSON.stringify(result.data)));
+				location.href = "ui_index";
+			}else if(result.code==code_toast){
+				$.alert(result.msg);
+			}
+		}) 
 	}
 	
 	 
@@ -56,7 +60,7 @@
 <body id="register">
 	<div class="wrapper">
 		<h1>注册</h1>
-		<s:form action="register" namespace="/" method="post" onsubmit="return checkForm();">
+		<form >
 			<div class="border">
 				<div class="padding">
 					<h2>USERNAME</h2>
@@ -75,10 +79,10 @@
 					<h2>REPASSWORD</h2>
 					<label> <input type="password" name="repassword"
 						id="repassword" class="txt_input" placeholder="再次输入密码">
-					</label> <label> <input class="submit" type="submit"
+					</label> <label> <input class="submit" type="button" onclick="checkForm()"
 						value="SIGN-IN">
 					</label>
-		</s:form>
+		<form>
 		<p class="forget">
 			<a href="#">已有账号？去登陆</a>
 		</p>
