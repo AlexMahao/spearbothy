@@ -6,37 +6,43 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/css/base.css" />
+
 <script type="text/javascript" src="/js/base.js"></script>
 <script type="text/javascript" src="js/jquery-1.8.3.js"></script>
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/header.css" />
-
+	href="css/header.css" />
+<script type="text/javascript" src="/js/jquery.cookie.js"></script>
 <script type="text/javascript">
 	$("document").ready(function(){
-		var cookie = getCookie("user");
-		alert(cookie.substring(1,cookie.length-1));	
-		var json = JSON.parse(""+cookie.substring(1,cookie.length-1));
-		alert(json.name);
-		
-		if(cookie==""){
-			$(".header_top").html("<a href='register_and_login.jsp'>登陆</a> <a href='register.jsp'>注册</a>")
+		$cookie = $.cookie("user");
+		alert(decodeURI($cookie));
+		if($cookie==""||$cookie==null){
+			$(".header_login").html("<a href='ui_login'>登陆</a> <a href='ui_register'>注册</a>")
 		}else{
-			$(".header_top").html("欢迎 "+JSON.parse(cookie.substring(1,cookie.length-1)).name+"<a href='javascript:exit()'>退出登陆</a>");
+			$(".header_login").html("<span>欢迎 "+JSON.parse(decodeURI($cookie)).name+"</span><a href='javascript:exit()'>退出登陆</a>");
 		}
 	})
 	
+	function exit(){
+		$.removeCookie('user');
+		location.href="/ui_index"
+	}
 	
 </script>
 </head>
 <body>
 	<div class="header_content">
-		<h1 style="float: left;">SpearBothy</h1>
-		<div style="float: right;">
-			<div class="header_top">
-				
+		<div class="header_title">
+			<h1 >SpearBothy</h1>
+		</div>
+		<div class="header_right">
+			<div class="header_login">
+				<a href="#">登陆</a> <a href="#">注册</a>
 			</div>
-			<div>
-				<ul class="header_menu">
+			<div class="header_menu">
+				<ul>
 					<li><a href="default.asp">首页</a></li>
 					<li><a href="news.asp">JAVA</a></li>
 					<li><a href="contact.asp">Android</a></li>
@@ -47,8 +53,9 @@
 			</div>
 		</div>
 	
+
+		<hr  class="header_undeline" />
 	</div>
-	<hr  class="header_undeline" />
 
 </body>
 </html>

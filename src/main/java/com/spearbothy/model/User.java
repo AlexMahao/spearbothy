@@ -21,13 +21,13 @@ public class User implements Serializable {
 	@Column(name = "id", length = 36)
 	private String id;
 
-	@Column(name = "name", length = 32)
+	@Column(name = "name", length = 32,unique=true)
 	private String name; // 用户名
 
 	@Column(name = "password", length = 32)
 	private String password; // 密码
 
-	@Column(name = "email", length = 32)
+	@Column(name = "email", length = 32,unique=true)
 	private String email; // 邮箱地址
 
 	@Column(name = "register_time", nullable = true, columnDefinition = "timestamp default current_timestamp")

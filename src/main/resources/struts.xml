@@ -4,8 +4,7 @@
 
 	<!-- 指定由spring负责action对象的创建 -->
 	<constant name="struts.objectFactory" value="spring" />
-	<!-- 所有匹配*.action的请求都由struts2处理 -->
-	<constant name="struts.action.extension" value="action" />
+
 	<!-- 是否启用开发模式 -->
 	<constant name="struts.devMode" value="true" />
 	<!-- struts配置文件改动后，是否重新加载 -->
@@ -32,7 +31,9 @@
 	<constant name="struts.ui.templateSuffix" value="ftl" />
 
 	<package name="basePackage" extends="struts-default">
-
+		<action name="ui_*">
+			<result>/WEB-INF/pages/{1}.jsp</result>
+		</action>
 	</package>
 
 </struts>

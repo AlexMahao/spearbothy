@@ -1,0 +1,86 @@
+#register {
+	background-image: url(../image/login_bgx.gif);
+	font-family: Arial, Helvetica, Verdana;
+}
+
+#register .wrapper {
+	width: 403px;
+	min-height: 400px;
+	margin: auto;
+	margin-top: 30px;
+}
+
+#register h1 {
+	text-shadow: 1px 1px 1px #FF0000;
+	font-weight: bold;
+	color: #66b3ff;
+	display: block;
+	text-align: center;
+}
+
+#register .border {
+	border-radius: 25px;
+	height: 453px;
+}
+
+#register .padding {
+	padding:23px 47px 20px 47px;
+}
+
+#register .padding h2 {
+	color: #4f5d80;
+	text-transform: uppercase;
+	font-size: 12px;
+	font-weight: normal;
+	margin-bottom: 11px;
+}
+
+#register input.txt_input2 {
+	margin-bottom: 20px;
+}
+
+#register input.txt_input {
+	width: 295px;
+	height: 36px;
+	border: 1px solid #cad2db;
+	padding: 0 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	line-height: 36px;
+	margin-bottom: 10px;
+	font-size: 14px;
+	color: #717171;
+	font-family: Arial;
+}
+
+#register .forget {
+	clear: both;
+	margin-top: 15px;
+	font-size: 11px;
+	text-align: right;
+	margin-bottom: 15px;
+}
+
+#register .forget a:visited,#register .forget a:link {
+	color: #aaaaaa;
+}
+
+#register .forget a:hover,#register .forget a:active {
+	color: orange;
+}
+
+#register .submit {
+	float: right;
+	width: 122px;
+	color: #fff;
+	margin-bottom:10px;
+	margin-top:20px;
+	height: 32px;
+	font-weight: bold;
+	background-color: #66b3ff;
+}
+
+#register .submit:hover {
+	background-color: #0080ff;
+}
