@@ -37,26 +37,28 @@
 </script>
 </head>
 <body>
-	<div class="header_content">
-		<div class="header_title">
-			<h1 >SpearBothy</h1>
-		</div>
-		<div class="header_right">
-			<div class="header_login">
-				<a href="ui_login">登陆</a> <a href="ui_register">注册</a>
+<div class="header_content">
+		<div class="header_top">
+				<div class="header_title">
+					<h1 >SpearBothy</h1>
+				</div>
+				<div class="header_right">
+					<div class="header_login">
+						<a href="/ui_login">登陆</a> <a href="/ui_register">注册</a>
+					</div>
+				</div>
 			</div>
-			<div class="header_menu">
+		<div class="header_menu">
 				<ul>
 					<li><a href="default.asp">首页</a></li>
 					<li><a href="news.asp">JAVA</a></li>
 					<li><a href="contact.asp">Android</a></li>
 					<li><a href="about.asp">IOS</a></li>
+					<li><a href="about.asp">心语心情</a></li>
 					<li><a href="about.asp">关于我们</a></li>
 					<li><a href="about.asp">留言</a></li>
 				</ul>
 			</div>
-		</div>
-	
 
 		<hr  class="header_undeline" />
 	</div>

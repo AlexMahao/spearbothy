@@ -1,5 +1,6 @@
 package com.spearbothy.service.impl;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,7 +56,17 @@ public class AricleServiceImpl implements ArticleService {
 		articleDao.save(blog);
 		
 		return blog;
-		
 	}
 
+	@Override
+	public List<Blog> findBlogsByType(String type,int page,int rows) throws BaseException {
+		List<Blog> blogs = articleDao .getBlogsByType(type,page,rows);
+		if(blogs==null||blogs.size()==0){
+			throw new BaseException("暂无记录");
+		}
+		return blogs;
+	}
+
+	
+	
 }

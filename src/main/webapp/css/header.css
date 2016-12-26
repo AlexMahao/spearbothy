@@ -1,42 +1,47 @@
 .header_content{
+	background-color:white;
 	width:1200px;
 	margin:auto;
+
 }
 
 .header_content hr{
-	position:relative;
-	top:10px;
-	height:2px;
+	height:1px;
 	background-color:#aaa;
 	display:block;
 	clear:both;
 }
 
+.header_top{
+	margin-bottom:10px;
+}
+
 .header_login{
-	font-size:10px;
 	text-align:right;
 	margin-top:10px;
 }
 
 .header_login a{
-	font-size:10px;
-	margin-left:10px;
-	margin-right:10px;
+	margin-right:30px;
 }
 
 .header_login a:hover{
 	color:orange;
 }
 
-.header_title{
+.header_login span{
+	margin-right:30px;
+}
 
+.header_title{
+	margin-left:20px;
 	margin-top:15px;
 	
 	float:left;
 }
 
 .header_title h1{
-	font-family:æ¥·ä½“;
+	
 	font-weight:900;
 	font-size:40px;
 }
@@ -47,13 +52,16 @@
 }
 
 .header_menu{
+	float:right;
 	margin-top:20px;
+	padding-bottom:20px;
 }
 
 .header_menu li{
-	font-size: 30px;
+	margin-top:10px;
+	    font-size: 30px;
     font-weight: bold;
-    font-family: æ¥·ä½“;
+    font-family:¿¬Ìå;
     float: left;
    
 }

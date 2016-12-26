@@ -37,6 +37,9 @@ public class Blog {
 	@Column(name="browse_count")
 	private int browseCount;
 	
+	@Column(name="comment_count")
+	private int commentCount;
+	
 	@Column(name="last_edit_time",nullable=true,columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
 	private Date lastEditTime;
 	
@@ -53,9 +56,33 @@ public class Blog {
 
 	@OneToMany(mappedBy="blog",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	private Set<Comment> comments = new HashSet<>();
+
+
 	
 	
 	
+	
+	public Blog(String id, String title, int browseCount, int commentCount,Date createTime) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.browseCount = browseCount;
+		this.commentCount = commentCount;
+		this.createTime = createTime;
+	}
+
+	public Blog() {
+		super();
+	}
+
+	public int getCommentCount() {
+		return commentCount;
+	}
+
+	public void setCommentCount(int commentCount) {
+		this.commentCount = commentCount;
+	}
+
 	public Set<Comment> getComments() {
 		return comments;
 	}

@@ -19,13 +19,12 @@ public class UserDao extends BaseDaoImpl<User> {
 	 * @return
 	 */
 	public User getUserByNameAndPassword(String username,String password) {
-		Query q = this.getCurrentSession().createQuery("from User where name=:name and password=:password");
+		Query q = this.getCurrentSession().createQuery("select new User(u.id,u.name,u.password,u.email,u.registerTime) from User u where name=:name and password=:password");
 		
 		q.setParameter("name",username);
 		q.setParameter("password", password);
 		List<User> l = q.list();
 		if (l != null && l.size() > 0) {
-			System.out.println("==========="+l.get(0).toString());
 			return l.get(0);
 		}
 		return null;

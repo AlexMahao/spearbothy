@@ -54,6 +54,19 @@ public class User implements Serializable {
 	
 	
 	
+	public User() {
+		super();
+	}
+
+	public User(String id, String name, String password, String email, Date registerTime) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.password = password;
+		this.email = email;
+		this.registerTime = registerTime;
+	}
+
 	public Set<Message> getMessages() {
 		return messages;
 	}

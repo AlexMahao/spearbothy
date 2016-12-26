@@ -27,7 +27,7 @@
 			return;
 		}
 		
-		$.post("login",$("form:first").serialize(),function(data){
+		$.post("login.action",$("form:first").serialize(),function(data){
 			var result = JSON.parse(data);
 			if(result.code==code_success){
 				$.cookie("user",encodeURI(JSON.stringify(result.data)));

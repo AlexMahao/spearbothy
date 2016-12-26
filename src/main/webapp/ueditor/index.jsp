@@ -101,12 +101,12 @@
 					"type":type,
 					"content":ue.getContent()
 			};
-			$.post("/publishArticle",params,function(data){
+			$.post("/publishArticle.action",params,function(data){
 				// 获取相应结果
 				var result = JSON.parse(data);
 				if(result.code==code_success){
 					$.alert(result.msg,function(){
-						location.href = "ui_index";
+						location.href = "/ui_index";
 					})
 				}else if(result.code==code_toast){
 					$.alert(result.msg);

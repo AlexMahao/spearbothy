@@ -42,7 +42,7 @@
 			return;
 		}
 		
-		 $.post("register",$("form:first").serialize(),function(data){
+		 $.post("register.action",$("form:first").serialize(),function(data){
 			var result = JSON.parse(data);
 			if(result.code==code_success){
 				$.cookie("user",encodeURI(JSON.stringify(result.data)));
