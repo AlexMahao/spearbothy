@@ -24,7 +24,7 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.0.1</version>
-			 <scope>provided</scope>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- ********************** JUnit 4.12 ********************** -->
@@ -107,9 +107,9 @@
 		</dependency>
 
 		<dependency>
-		  <groupId>javassist</groupId>
-		  <artifactId>javassist</artifactId>
-		  <version>3.12.0.GA</version>
+			<groupId>javassist</groupId>
+			<artifactId>javassist</artifactId>
+			<version>3.12.0.GA</version>
 		</dependency>
 		<!-- ********************** Spring 3.1.2 RELEASE ********************** -->
 		<dependency>
@@ -137,6 +137,9 @@
 			<artifactId>spring-orm</artifactId>
 			<version>3.2.0.RELEASE</version>
 		</dependency>
+
+	
+
 
 	</dependencies>
 

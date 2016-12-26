@@ -24,7 +24,7 @@ public class Blog {
 	@Column(name="id",length=36)
 	private String id;
 	
-	@Column(name="title",length=32)
+	@Column(name="title",length=100)
 	private String title;
 	
 	@Type(type="text")  

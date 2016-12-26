@@ -10,23 +10,28 @@
 	href="${pageContext.request.contextPath}/css/base.css" />
 
 <script type="text/javascript" src="/js/base.js"></script>
-<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+<script type="text/javascript" src="/js/jquery-1.8.3.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="css/header.css" />
 <script type="text/javascript" src="/js/jquery.cookie.js"></script>
 <script type="text/javascript">
 	$("document").ready(function(){
-		$cookie = $.cookie("user");
-		if($cookie==""||$cookie==null){
+		var user = getUserFromCookie();
+		if(user==null){
 			$(".header_login").html("<a href='ui_login'>登陆</a> <a href='ui_register'>注册</a>")
 		}else{
-			$(".header_login").html("<span>欢迎 "+JSON.parse(decodeURI($cookie)).name+"</span><a href='javascript:exit()'>退出登陆</a>");
+			$(".header_login").html("<span>欢迎 "+user.name+"</span><a href='javascript:toedit()'>写文章</a><a href='javascript:'>个人信息</a><a href='javascript:exit()'>退出登陆</a>");
 		}
 	})
 	
 	function exit(){
 		$.removeCookie('user');
 		location.href="/ui_index"
+	}
+	
+	function toedit(){
+
+		location.href = "/ueditor/index.jsp";
 	}
 	
 </script>
@@ -38,7 +43,7 @@
 		</div>
 		<div class="header_right">
 			<div class="header_login">
-				<a href="#">登陆</a> <a href="#">注册</a>
+				<a href="ui_login">登陆</a> <a href="ui_register">注册</a>
 			</div>
 			<div class="header_menu">
 				<ul>

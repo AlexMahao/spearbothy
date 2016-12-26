@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.spearbothy.model.User;
 
-@Repository("userDao")
+@Repository
 public class UserDao extends BaseDaoImpl<User> {
 
 	/**
