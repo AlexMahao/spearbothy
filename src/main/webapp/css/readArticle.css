@@ -1,0 +1,75 @@
+
+span{
+	display:block;
+}
+
+a{
+	color:#4296db;
+}
+a:hover{
+	color: #e7645c;
+}
+
+body{
+	font-family: 'PT Serif', "Georgia", "Times New Roman", Times, "Songti SC", "SimSun", sans-serif;
+	font-weight:400;
+
+}
+
+.mheader {
+
+	height:53px;
+	border-bottom:1px solid #eee;
+}
+.mheader .content{
+	width:70%;
+	clear:both;
+	margin: auto;
+}
+
+.mheader h2{
+	line-height:53px;
+	float:left;
+
+}
+
+.mheader li{
+
+	margin-right:20px;
+	float:right;
+	line-height:53px;
+}
+
+.mheader li a{
+	font-size:0.85em;
+	color:#4296db;
+}
+
+.mheader  li a:hover {
+    color: #e7645c;
+    text-decoration: none;
+}
+
+.maincontent{
+	clear:both;	
+	width:60%;
+	margin: auto;
+	padding-top:30px;
+}
+
+.maincontent #title{
+		font-size:2em;
+		text-align:center;
+		line-height:50px;
+
+}
+
+.maincontent #author{
+	font-size:1em;
+	text-align:center;
+	line-height:2em;
+}
+
+.maincontent #c{
+
+}

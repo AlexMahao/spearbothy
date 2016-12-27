@@ -49,7 +49,8 @@ public class AricleServiceImpl implements ArticleService {
 		blog.setId(UUID.randomUUID().toString());
 		blog.setUser(user);
 		blog.setResourceType(resourceType);
-		blog.setMarkdown(false);
+		blog.setMarkdown(rArticle.isMarkdown());
+		blog.setMdContent(rArticle.getMdContent());
 		blog.setContent(rArticle.getContent());
 		blog.setTitle(rArticle.getTitle());
 		

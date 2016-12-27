@@ -31,6 +31,11 @@ public class Blog {
 	@Column(name="content")
 	private String content;
 	
+	
+	@Type(type="text")  
+	@Column(name="md_content")
+	private String mdContent;
+	
 	@Column(name="create_time",nullable=true,columnDefinition="timestamp default current_timestamp")
 	private Date createTime;
 	
@@ -162,6 +167,16 @@ public class Blog {
 	public void setResourceType(ResourceType resourceType) {
 		this.resourceType = resourceType;
 	}
+
+	public String getMdContent() {
+		return mdContent;
+	}
+
+	public void setMdContent(String mdContent) {
+		this.mdContent = mdContent;
+	}
+	
+	
 	
 	
 	

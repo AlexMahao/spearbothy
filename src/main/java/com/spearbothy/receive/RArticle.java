@@ -19,7 +19,30 @@ public class RArticle {
 	
 	private int rows;
 	
+	private boolean isMarkdown;
 	
+	private String mdContent;
+	
+	
+	
+	
+	
+
+	public boolean isMarkdown() {
+		return isMarkdown;
+	}
+
+	public void setMarkdown(boolean isMarkdown) {
+		this.isMarkdown = isMarkdown;
+	}
+
+	public String getMdContent() {
+		return mdContent;
+	}
+
+	public void setMdContent(String mdContent) {
+		this.mdContent = mdContent;
+	}
 
 	public int getPage() {
 		return page;
