@@ -68,6 +68,17 @@ public class AricleServiceImpl implements ArticleService {
 		return blogs;
 	}
 
+	@Override
+	public Blog getBlogDetail(String id) throws BaseException {
+		Blog blog = articleDao.getBlodById(id);
+		
+		if(blog==null){
+			throw new BaseException("无查询结果");
+		}
+		
+		return blog;
+	}
+
 	
 	
 }

@@ -31,7 +31,7 @@
 	
 	function toedit(){
 
-		location.href = "/ueditor/index.jsp";
+		location.href = "/meditor/meditor.jsp";
 	}
 	
 </script>

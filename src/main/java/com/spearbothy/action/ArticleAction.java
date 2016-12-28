@@ -88,5 +88,27 @@ public class ArticleAction extends BaseAction implements ModelDriven<RArticle> {
 		
 		writeJson(result);
 	}
-
+	
+	
+	@Action("getBlogDetail")
+	public void getBlogDetail(){
+		
+		System.out.println("*****************获取博客详情*****************8");
+		// 获取文章详情
+		ResultResponse<Blog> result = new ResultResponse<>();
+		
+		if(StringUtils.isEmpty(mRArticle.getBlogId())){
+			result.setToastMsg("请求参数不合法");
+		}else{
+			try {
+				Blog blog = aricleService.getBlogDetail(mRArticle.getBlogId());
+				System.out.println(blog.getUser().getName()+"-------------------");
+				result.setSuccessDate(blog);
+			} catch (BaseException e) {
+				result.setToastMsg(e);
+			}
+		}
+		
+		writeJson(result);
+	}
 }

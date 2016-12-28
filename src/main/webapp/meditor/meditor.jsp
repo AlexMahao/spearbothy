@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8" />
 <title>Simple example - Editor.md examples</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/cssReset.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/base.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/editormd.css" />
 	<script src="${pageContext.request.contextPath}/js/jquery-1.8.3.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.cookie.js"></script>
@@ -28,35 +28,8 @@
 			type="button" value="发表" onclick="submit()" />
 		</div>
 		<div id="test-editormd">
-						<textarea style="display: none;">
-[TOC]
-			
-#### Disabled options
-
-- TeX (Based on KaTeX);
-- Emoji;
-- Task lists;
-- HTML tags decode;
-- Flowchart and Sequence Diagram;
-			
-#### Editor.md directory
-			
-editor.md/
-lib/
-
-			
-```html
-&lt;!-- English --&gt;
-&lt;script src="../dist/js/languages/en.js"&gt;&lt;/script&gt;
-			
-&lt;!-- 繁體中文 --&gt;
-&lt;script src="../dist/js/languages/zh-tw.js"&gt;&lt;/script&gt;
-```
-			</textarea>
+			<textarea style="display: none;"></textarea>
 		</div>
-		
-		
-		
 		
 	</div>
 
@@ -73,7 +46,18 @@ lib/
 				imageUpload : true,
 				imageFormats : [ "jpg", "jpeg", "gif", "png", "bmp", "webp" ],
 				imageUploadURL : "/uploadfile",
-				saveHTMLToTextarea : true
+				saveHTMLToTextarea : true,
+				toolbarIcons :function(){
+					return  [
+					         "undo", "redo", "|", 
+					            "bold", "del", "italic", "quote", "ucwords", "uppercase", "lowercase", "|", 
+					            "h1", "h2", "h3", "h4", "h5", "h6", "|", 
+					            "list-ul", "list-ol", "hr", "|",
+					            "link",  "image", "code", "preformatted-text", "code-block", "table", "datetime",   "|",
+					            "goto-line", "watch", "preview", "fullscreen","search", "|",
+					            "help"
+					        ];
+				}
 			});			 
 		});
 		

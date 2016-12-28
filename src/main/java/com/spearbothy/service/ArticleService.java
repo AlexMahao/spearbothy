@@ -11,4 +11,6 @@ public interface ArticleService {
 	public Blog publishArticle(RArticle rArticle) throws BaseException; 
 	
 	public List<Blog> findBlogsByType(String type,int page,int rows) throws BaseException;
+
+	public Blog getBlogDetail(String id) throws BaseException;
 }

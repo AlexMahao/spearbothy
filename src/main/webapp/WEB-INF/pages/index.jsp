@@ -19,13 +19,19 @@
 	$("document").ready(function() {
 		// 文档加载完毕之后，开始请求数据
 
-		requestAndroid();
+		requestList("android");
+		
+		requestList("java");
 	})
 
-	function requestAndroid() {
+	function toBlogDetail(id){
+		location.href = "/ui_redArticle?id="+id;
+	}
+	
+	function requestList(type) {
 		// 请求Android 的标题，评论次数，查看次数
 		var params = {
-			"type" : "android",
+			"type" : type,
 			"page" : 1,
 			"rows" : 4
 		};
@@ -33,18 +39,23 @@
 			var result = JSON.parse(data);
 			if (result.code == code_success) {
 				var blogs = result.data;
-				var $list = $(".android .right");
+				var $list = $("."+type+" .right");
 				var content = "";
 				for (var i = 0; i < blogs.length; i++) {
 					var blog = blogs[i];
 					content = content
-							+ "<div class='content'><p class='title'>"
+							+ "<div class='content'><span style='display:none'>"+blog.id+"</span><p class='title'>"
 							+ blog.title + "</p><div class='desc'>评论（"
 							+ blog.commentCount + "）  查看（" + blog.browseCount
 							+ "）</div></div>"
 				}
 
 				$list.html(content);
+				
+				$("."+type+" div .content").click(function(){
+					var id = $(this).children("span").first();
+					toBlogDetail(id.text());
+				});
 			} else if (result.code == code_toast) {
 				$.alert(result.msg);
 			}

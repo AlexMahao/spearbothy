@@ -15,6 +15,8 @@ public class RArticle {
 	
 	private String content;
 	
+	private String blogId;
+	
 	private int page;
 	
 	private int rows;
@@ -23,16 +25,12 @@ public class RArticle {
 	
 	private String mdContent;
 	
-	
-	
-	
-	
 
 	public boolean isMarkdown() {
 		return isMarkdown;
 	}
 
-	public void setMarkdown(boolean isMarkdown) {
+	public void setIsMarkdown(boolean isMarkdown) {
 		this.isMarkdown = isMarkdown;
 	}
 
@@ -91,6 +89,20 @@ public class RArticle {
 	public void setContent(String content) {
 		this.content = content;
 	}
+
+	public String getBlogId() {
+		return blogId;
+	}
+
+	public void setBlogId(String blogId) {
+		this.blogId = blogId;
+	}
+
+	public void setMarkdown(boolean isMarkdown) {
+		this.isMarkdown = isMarkdown;
+	}
+	
+	
 	
 	
 }

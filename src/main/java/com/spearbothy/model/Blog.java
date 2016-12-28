@@ -24,7 +24,7 @@ public class Blog {
 	@Column(name="id",length=36)
 	private String id;
 	
-	@Column(name="title",length=100)
+	@Column(name="title" ,length=100)
 	private String title;
 	
 	@Type(type="text")  
@@ -62,11 +62,27 @@ public class Blog {
 	@OneToMany(mappedBy="blog",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	private Set<Comment> comments = new HashSet<>();
 
+	
+	
+	
+	
+	
+	
+	public Blog(String id, String title, String content, String mdContent, Date createTime, int browseCount,
+			int commentCount, Date lastEditTime, boolean isMarkdown, User user) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.content = content;
+		this.mdContent = mdContent;
+		this.createTime = createTime;
+		this.browseCount = browseCount;
+		this.commentCount = commentCount;
+		this.lastEditTime = lastEditTime;
+		this.isMarkdown = isMarkdown;
+		this.user = user;
+	}
 
-	
-	
-	
-	
 	public Blog(String id, String title, int browseCount, int commentCount,Date createTime) {
 		super();
 		this.id = id;

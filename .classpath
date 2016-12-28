@@ -33,10 +33,5 @@
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/commons-io-2.4.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/json.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/ueditor-1.1.2.jar"/>
-	<classpathentry excluding="**" kind="src" output="target/test-classes" path="src/test/resources">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

@@ -7,8 +7,8 @@
 
 	<!-- 是否启用开发模式 -->
 	<constant name="struts.devMode" value="true" />
-	
-	
+
+
 	<!-- struts配置文件改动后，是否重新加载 -->
 	<constant name="struts.configuration.xml.reload" value="true" />
 	<!-- 设置浏览器是否缓存静态内容 -->
@@ -33,8 +33,25 @@
 	<constant name="struts.ui.templateSuffix" value="ftl" />
 
 	<package name="basePackage" extends="struts-default">
+		<interceptors>
+			<interceptor-stack name="myStack">
+				<interceptor-ref name="fileUpload">
+					<!-- 文件过滤 -->
+					<param name="allowedTypes">image/bmp,image/png,image/gif,image/jpeg</param>
+					<!-- 文件大小, 以字节为单位 -->
+					<param name="maximumSize">1025956</param>
+				</interceptor-ref>
+				<!-- 默认拦截器必须放在fileUpload之后，否则无效 -->
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="myStack" />
 		<action name="ui_*">
 			<result>/WEB-INF/pages/{1}.jsp</result>
+		</action>
+		
+		<action name="ui_*?*">
+			<result>/WEB-INF/pages/{1}.jsp?*</result>
 		</action>
 	</package>
 

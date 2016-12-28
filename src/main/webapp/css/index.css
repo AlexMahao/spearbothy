@@ -9,7 +9,7 @@ body{
 }
 
 #index_center .banner{
-width:100%;
+	width:100%;
 	height:400px;
 	background-color:rgb(200, 200, 169);
 }
@@ -20,7 +20,6 @@ width:100%;
 	position:relative;
 	right:100px;
 	text-align:center;
-	font-family:Ώ¬Με;
 }
 
 #index_center .banner p:last-child{
@@ -29,7 +28,6 @@ width:100%;
 	left:300px;
 	text-align:center;
 	font-size:30px;
-	font-family:Ώ¬Με;
 }
 
 #index_content{
