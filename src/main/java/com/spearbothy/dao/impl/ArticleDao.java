@@ -28,7 +28,7 @@ public class ArticleDao extends BaseDaoImpl<Blog> {
 	 * @return
 	 */
 	public Blog getBlodById(String id) {
-		String hql = "select new Blog(b.id,b.title,b.content,b.mdContent,b.createTime,b.browseCount,"
+		String hql = "select new Blog(b.id,b.title,b.content,b.createTime,b.browseCount,"
 				+ "b.commentCount,b.lastEditTime,b.isMarkdown,b.user)  from Blog b where b.id='" + id + "'";
 
 		Blog blog = get(hql);

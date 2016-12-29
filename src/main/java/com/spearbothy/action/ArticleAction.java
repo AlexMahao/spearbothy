@@ -101,6 +101,7 @@ public class ArticleAction extends BaseAction implements ModelDriven<RArticle> {
 			result.setToastMsg("请求参数不合法");
 		}else{
 			try {
+				
 				Blog blog = aricleService.getBlogDetail(mRArticle.getBlogId());
 				System.out.println(blog.getUser().getName()+"-------------------");
 				result.setSuccessDate(blog);

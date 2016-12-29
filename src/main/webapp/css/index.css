@@ -46,11 +46,11 @@ body{
 }
 
 .android .left{
-	width:270px;
+	width:260px;
 	height:400px;
+	background:url(/image/income1.png) #31bafd left bottom no-repeat;
 	float:left;
 	text-align:center;
-	background-color:#31bafd;
 
 }
 
@@ -101,11 +101,11 @@ body{
 }
 
 .java .left{
-	width:270px;
+	width:260px;
 	height:350px;
 	float:left;
 	text-align:center;
-	background-color:#fb8126;
+	background: url(/image/income2.png) #fb8126 left bottom no-repeat
 
 }
 
@@ -155,11 +155,11 @@ body{
 }
 
 .ios .left{
-	width:270px;
+	width:260px;
 	height:280px;
 	float:left;
 	text-align:center;
-	background-color:#fece00;
+	background:url(/image/income3.png) #fece00 left bottom no-repeat;
 
 }
 

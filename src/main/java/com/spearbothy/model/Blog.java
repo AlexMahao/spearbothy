@@ -68,7 +68,7 @@ public class Blog {
 	
 	
 	
-	public Blog(String id, String title, String content, String mdContent, Date createTime, int browseCount,
+	public Blog(String id, String title, String content, Date createTime, int browseCount,
 			int commentCount, Date lastEditTime, boolean isMarkdown, User user) {
 		super();
 		this.id = id;
