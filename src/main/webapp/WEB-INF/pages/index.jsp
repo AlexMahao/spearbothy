@@ -70,12 +70,17 @@
 
 	<div id="index_center">
 
-		<div class="banner">
-
-			<p>这是一句很长的名言警句，但是还没想好填什么</p>
-			<p>----矛屋</p>
-
-		</div>
+                <div id="large-header" class="banner" >
+                    <canvas id="demo-canvas"></canvas>
+                    <p style="    position: relative;
+    top: -300px;
+    width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+    font-size: 30px;">这个地方应该放一句很励志的话，但还没想好</p>   
+                </div>
+				<script src="/js/canvas_banner.js"></script>         
 	</div>
 
 	<div id="index_content">
