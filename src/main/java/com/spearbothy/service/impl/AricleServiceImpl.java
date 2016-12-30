@@ -12,6 +12,7 @@ import com.spearbothy.dao.impl.ResourceTypeDao;
 import com.spearbothy.dao.impl.UserDao;
 import com.spearbothy.exception.BaseException;
 import com.spearbothy.model.Blog;
+import com.spearbothy.model.Page;
 import com.spearbothy.model.ResourceType;
 import com.spearbothy.model.User;
 import com.spearbothy.receive.RArticle;
@@ -61,13 +62,30 @@ public class AricleServiceImpl implements ArticleService {
 
 	@Override
 	public List<Blog> findBlogsByType(String type,int page,int rows) throws BaseException {
-		List<Blog> blogs = articleDao .getBlogsByType(type,page,rows);
+		List<Blog> blogs = articleDao.getBlogsByType(type,page,rows);
+		
 		if(blogs==null||blogs.size()==0){
 			throw new BaseException("暂无记录");
 		}
 		return blogs;
 	}
 
+	@Override
+	public Page<Blog> findBlogsByType(String type,Page<Blog> pageBean){
+		int page  = pageBean.getCurrentPage();
+		int rows = pageBean.getPageSize();
+		
+		List<Blog> blogs = articleDao.getBlogsByType(type,page,rows);
+		int count = (int) articleDao.getCountBlogsByType(type);
+		// 获取对象之后，返回分页的数据
+		pageBean.setMaxRow((int)count);// 总记录数
+		pageBean.setTotalPage((count+rows-1)/(rows));// 共多少页
+		pageBean.setHasNext(page*rows+blogs.size()<count);// 是否有下一页
+		pageBean.setData(blogs);
+		return pageBean;
+	} 
+	
+	
 	@Override
 	public Blog getBlogDetail(String id) throws BaseException {
 		Blog blog = articleDao.getBlodById(id);

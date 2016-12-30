@@ -10,6 +10,7 @@ import org.apache.struts2.convention.annotation.Action;
 import com.opensymphony.xwork2.ModelDriven;
 import com.spearbothy.exception.BaseException;
 import com.spearbothy.model.Blog;
+import com.spearbothy.model.Page;
 import com.spearbothy.receive.RArticle;
 import com.spearbothy.response.Code;
 import com.spearbothy.response.ResultResponse;
@@ -107,6 +108,38 @@ public class ArticleAction extends BaseAction implements ModelDriven<RArticle> {
 				result.setSuccessDate(blog);
 			} catch (BaseException e) {
 				result.setToastMsg(e);
+			}
+		}
+		
+		writeJson(result);
+	}
+	
+	
+	@Action("getBlogsByType")
+	public void getBlogsByType(){
+	System.out.println("*****************分页查询博客列表*****************8");
+		
+		ResultResponse<Page<Blog>> result = new ResultResponse<>();
+		
+		if(StringUtils.isEmpty(mRArticle.getType())){
+			result.setCode(Code.TOAST_MESSAGE);
+			result.setMsg("所传参数不足");
+		}else{
+			try {
+				Page<Blog> pageBean = new Page();
+				pageBean.setCurrentPage(mRArticle.getPage());
+				pageBean.setPageSize(mRArticle.getRows());
+				aricleService.findBlogsByType(mRArticle.getType(), pageBean);
+				result.setCode(Code.SUCCESS);
+				result.setMsg("发表成功");
+				result.setData(pageBean);
+			} catch (BaseException e) {
+				result.setCode(Code.TOAST_MESSAGE);
+				result.setMsg(e.getMessage());
+			}catch(Exception e){
+				e.printStackTrace();
+				result.setCode(Code.TOAST_MESSAGE);
+				result.setMsg("服务器错误");
 			}
 		}
 		

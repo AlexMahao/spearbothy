@@ -10,6 +10,7 @@
 	href="${pageContext.request.contextPath}/css/base.css" />
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/index.css">
+	<link rel="stylesheet" type="text/css" href="/css/header.css">
 <script type="text/javascript" src="js/jquery-1.8.3.js"></script>
 <script type="text/javascript" src="js/alert.js"></script>
 <script type="text/javascript" src="js/base.js"></script>
@@ -93,22 +94,7 @@
 
 			</div>
 			<div class="right">
-				<div class="content">
-					<p class="title">利用ViewPager实现淘宝上拉加载详情</p>
-					<div class="desc">评论（0） 查看（0）</div>
-				</div>
-				<div class="content">
-					<p class="title">利用ViewPager实现淘宝上拉加载详情</p>
-					<div class="desc">评论（0） 查看（0）</div>
-				</div>
-				<div class="content">
-					<p class="title">利用ViewPager实现淘宝上拉加载详情</p>
-					<div class="desc">评论（0） 查看（0）</div>
-				</div>
-				<div class="content">
-					<p class="title">利用ViewPager实现淘宝上拉加载详情</p>
-					<div class="desc">评论（0） 查看（0）</div>
-				</div>
+				
 
 			</div>
 		</div>

@@ -1,6 +1,7 @@
 // ===============jquery 状态回调code
 var code_success ="0000";
 var code_toast = "1001";
+var code_sever_error = "1002";
 
 /**
  * 从cookie 中获取到user 对象

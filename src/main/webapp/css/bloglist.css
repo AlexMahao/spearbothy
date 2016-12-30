@@ -1,0 +1,118 @@
+body{
+	background-color: #f8f8f8;
+}
+
+.container{
+
+	width: 1000px;
+	border: 1px solid #eee;
+	background-color: white;
+	margin: 50px auto;
+
+}
+
+
+.container>div:first-child{
+	width: 1000px;
+	margin: auto;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+.container .item{
+	padding:30px 30px 30px 30px;
+	margin: 10px 20px 10px 70px;
+	
+	position:relative;
+	cursor: pointer;
+
+
+}
+
+.container .left_date{
+    width: 55px;
+    height: 63px;
+    background-color: #ff5f83;
+    color: #fff;
+    font-size: 40px;
+    float: left;
+    line-height: 40px;
+    padding: 6px 10px;
+    font-weight: bold;
+    text-align: center;
+
+}
+
+.left_date span {
+    display: block;
+    font-size: 26px;
+    line-height: 20px;
+    font-weight: normal;
+}
+
+.left_detail{
+	float: left;
+	margin-left: 50px;
+	width: 700px;
+}
+
+.list_title a{
+	font-size: 26px;
+}
+
+.list_info{
+	font-size: 14px;
+    color: #666;
+    margin: 10px auto 15px auto;
+}
+
+.list_info span {
+    color: #ff5f83;
+    margin-right: 20px;
+}
+
+.list_brief {
+    color: #777;
+    margin-top: 10px;
+    line-height: 22px;
+}
+
+.list_brief a{
+	font-size: 14px;
+	color:#777;
+	word-spacing:3px;
+}
+
+.biankuang{
+	width: 3px;
+	height: 3px;
+	position: absolute;
+	z-index: 99;
+	border-radius:10px;
+}
+
+.biankuang_1{
+	height: 0px;
+	top: 0px;
+	left:0px;
+	border-left: 2px solid #ff5f83;
+}
+
+.biankuang_2 {
+	width: 0px;
+	bottom:-2px;
+	left: 0px;
+	border-top: 2px solid #EB5858;
+}
+.biankuang_3{
+	height: 0px;
+	bottom:0px;
+	right:0px;
+	border-right: 2px solid #EB5858;
+}
+.biankuang_4{
+	width:0px;
+	top:-2px;
+	right:0px;
+	border-bottom: 2px solid #EB5858;
+}
