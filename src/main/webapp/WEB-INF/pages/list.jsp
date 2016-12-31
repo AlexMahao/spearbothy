@@ -19,11 +19,14 @@
 	
 	// 类型
 	var type ;
+	
+	// 是否正在加载数据
+	var isNetWork = false;
 	// page对象
 	var pageBean = {
 			"currentPage":0,
 			"pageSize":10,
-			"isHasNext":true
+			"hasNext":true
 	};
 
 	$(document).ready(function() {
@@ -35,9 +38,26 @@
 		
 	});
 	
+	 $(window).scroll(function () {
+	        var scrollTop = $(this).scrollTop();//scrollTop为滚动条在Y轴上的滚动距离。
+	        var scrollHeight = $(document).height(); // 获取整个文档的高度
+	        var height = $(window).height();// 获取显示区域的高度
+	        if(scrollTop>height/2){
+	        	getBlogType();
+	        }
+	 });
+
+	
+	
 	function getBlogType(){
 		
-		if(!pageBean.isHasNext){
+		if(isNetWork){
+			return;
+		}
+		
+		isNetWork = true;
+		
+		if(!pageBean.hasNext){
 			return;
 		}
 		
@@ -48,20 +68,37 @@
 		}
 		
 		$.post("/getBlogsByType.action",params,function(data){
+			isNetWork = false;
 			var result = JSON.parse(data);
 			if(result.code==code_success){
 				pageBean = result.data;
 				parseData(pageBean.data);
+				/* alert($(".item[currentPage="+pageBean.currentPage+"] ").size());
+				$("[currentPage="+pageBean.currentPage+"] ").hover(
+						function () {
+						  var obj = $(this);
+							biankuang(obj);
+						},
+						function () {
+						  var obj = $(this);
+							biankuang1(obj);
+						}); */
 			}
+			
 		});
+		
+	/* 	$("#container_content").ajaxComplete(function(){ //待请求完成时 执行 
+			// 请求完成之后获取动态加载的数据
+		})  */
 	}
 	
 	function parseData(data){
 		var container ="";
 		for(var i = 0 ; i<data.length;i++){
-			
 			var blog = data[i];
-			var bloghtml = "<div class='item aniview' ss='"+blog.id+"' data-av-animation='fadeInUp'> ";
+			
+			var bloghtml = "<div class='item aniview' id='"+blog.id+"'   currentPage='"+pageBean.currentPage+"' data-av-animation='fadeInUp'> ";
+			
 			
 			var bloghtml = bloghtml+"<div class='biankuang biankuang_1'></div>";
 			var bloghtml = bloghtml+"<div class='biankuang biankuang_2'></div>";
@@ -78,25 +115,27 @@
 
 			bloghtml = bloghtml +"<div class='list_brief'><a >暂无摘要记录</a></div>";
 			bloghtml = bloghtml +"</div><div style='clear: both;'></div></div>";
-			$("#container_content").html($("#container_content").html()+bloghtml);
-			
-		}
-		$(".item").click(function(index){
-			toBlogDetail($(this).attr("ss"));
-		});
-		// 初始化动画
-		$('.aniview').AniView();
+			$("#container_content").append(bloghtml);
 		
-		$('.item').hover(
-				function () {
-				  var obj = $(this);
-					biankuang(obj);
-				},
-				function () {
-				  var obj = $(this);
-					biankuang1(obj);
+			 $("#"+blog.id).hover(
+						function () {
+							  var obj = $(this);
+							  	
+								biankuang(obj);
+							},
+							function () {
+							  var obj = $(this);
+								biankuang1(obj);
+							}); 
+			 
+			 $("#"+blog.id).click(function(index){
+					toBlogDetail($(this).attr("id"));
 				});
+			 $("#"+blog.id).AniView();		
+		}
 	}
+	
+	
 	
 	function toBlogDetail(id){
 		location.href = "/ui_redArticle?id="+id;

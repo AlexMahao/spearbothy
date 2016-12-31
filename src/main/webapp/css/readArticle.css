@@ -27,6 +27,10 @@ body{
 	margin: auto;
 }
 
+.mheader .content ul{
+	list-style-type: none;	
+}
+
 .mheader h2{
 	line-height:53px;
 	float:left;

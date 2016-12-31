@@ -80,7 +80,7 @@ public class AricleServiceImpl implements ArticleService {
 		// 获取对象之后，返回分页的数据
 		pageBean.setMaxRow((int)count);// 总记录数
 		pageBean.setTotalPage((count+rows-1)/(rows));// 共多少页
-		pageBean.setHasNext(page*rows+blogs.size()<count);// 是否有下一页
+		pageBean.setHasNext((page-1)*rows+blogs.size()<count);// 是否有下一页
 		pageBean.setData(blogs);
 		return pageBean;
 	} 

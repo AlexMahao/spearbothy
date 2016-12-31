@@ -104,6 +104,10 @@
 	margin: 0 auto;
 }
 
+.head_content ul{
+	list-style-type: none;
+}
+
 .header_login a {
 	font-size: 14px;
 }

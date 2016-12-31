@@ -20,8 +20,8 @@ body{
 	font-family:PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans;
 }
 
-/* 重置列表元素 */
-ul, ol { list-style: none; }
+ /* 重置列表元素*/
+/* ul, ol { list-style: none; }  */
 
 /* 重置文本格式元素 */
 a { text-decoration: none; }
