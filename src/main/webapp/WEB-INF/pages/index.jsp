@@ -9,12 +9,12 @@
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/base.css" />
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/index.css">
-	<link rel="stylesheet" type="text/css" href="/css/header.css">
-<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
-<script type="text/javascript" src="js/alert.js"></script>
-<script type="text/javascript" src="js/base.js"></script>
-<script type="text/javascript" src="/js/jquery.cookie.js"></script>
+	href="${pageContext.request.contextPath}/css/index.scss">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.3.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/alert.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/base.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.cookie.js"></script>
 
 <script type="text/javascript">
 	$("document").ready(function() {
@@ -26,7 +26,7 @@
 	})
 
 	function toBlogDetail(id){
-		location.href = "/ui_redArticle?id="+id;
+		location.href = "${pageContext.request.contextPath}/ui_redArticle?id="+id;
 	}
 	
 	function requestList(type) {
@@ -81,7 +81,7 @@
     color: white;
     font-size: 30px;">这个地方应该放一句很励志的话，但还没想好</p>   
                 </div>
-				<script src="/js/canvas_banner.js"></script>         
+				<script src="${pageContext.request.contextPath}/js/canvas_banner.js"></script>         
 	</div>
 
 	<div id="index_content">

@@ -67,7 +67,7 @@
 		</div>
 	</div>
 	<div class="head_content">
-		<a href="#"><img src="/image/logo.png" height="70"></img></a>
+		<a href="#"><img src="${pageContext.request.contextPath}/image/logo.png" height="70"></img></a>
 		<ul>
 			<li><a href="ui_index">首页</a></li>
 			<li><a href="ui_list?type=java">JAVA</a></li>

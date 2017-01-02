@@ -24,13 +24,13 @@
 		$.post("/getBlogDetail.action", params, function(data) {
 			// 结果回调
 			var result = JSON.parse(data);
-			if(result.code==code_success){
-				
+			if (result.code == code_success) {
+
 				$(".maincontent #title").text(result.data.title);
-				$author =  $("#authorhref");
+				$author = $("#authorhref");
 				$author.text(result.data.user.name);
 				$("#md").html(result.data.content);
-			}else if(result.code==code_toast){
+			} else if (result.code == code_toast) {
 				$.alert(result.msg);
 			}
 		});
@@ -52,13 +52,23 @@
 
 	<div class="maincontent">
 
-		<span id="title"></span> <span id="author">作者：<a id="authorhref"
-			href="#"></a></span>
+		<span id="title"></span> <span id="author">作者：<a
+			id="authorhref" href="#"></a></span>
 
-		<div id="md" class="markdown-body editormd-preview-container">
-		
-		</div>
+		<div id="md" class="markdown-body editormd-preview-container"></div>
 	</div>
 
+<div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+<script>
+var cloudTieConfig = {
+  url: document.location.href, 
+  sourceId: "",
+  productKey: "f3aa18e63c664c88ad359b14614b5db3",
+  target: "cloud-tie-wrapper"
+};
+var yunManualLoad = true;
+Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true);
+</script>
 </body>
 </html>
