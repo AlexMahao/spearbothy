@@ -4,12 +4,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>登陆</title>
-<link rel="stylesheet" type="text/css" href="css/base.css" />
-<link rel="stylesheet" type="text/css" href="css/login.css" />
-<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
-<script type="text/javascript" src="js/alert.js"></script>
-<script type="text/javascript" src="js/base.js"></script>
-<script type="text/javascript" src="/js/jquery.cookie.js"></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/base.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/login.css" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.3.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/alert.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/base.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.cookie.js"></script>
 
 <script type="text/javascript">
 	function login() {
@@ -27,7 +27,7 @@
 			return;
 		}
 		
-		$.post("login.action",$("form:first").serialize(),function(data){
+		$.post("${pageContext.request.contextPath}/login.action",$("form:first").serialize(),function(data){
 			var result = JSON.parse(data);
 			if(result.code==code_success){
 				$.cookie("user",encodeURI(JSON.stringify(result.data)));

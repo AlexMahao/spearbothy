@@ -5,15 +5,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="/css/header.css">
-<link rel="stylesheet" type="text/css" href="/css/base.css" />
-<link rel="stylesheet" type="text/css" href="/css/bloglist.css" />
-<link type="text/css" rel="stylesheet" href="/css/animate.css">
-<script type="text/javascript" src="/js/base.js"></script>
-<script type="text/javascript" src="/js/jquery-1.8.3.js"></script>
-<script type="text/javascript" src="/js/jquery.aniview.js"></script>
-<script type="text/javascript" src="/js/jquery.cookie.js"></script>
-<script type="text/javascript" src="/js/alert.js"></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/base.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bloglist.css" />
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/animate.css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/base.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.3.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.aniview.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/alert.js"></script>
 <script>
 
 	
@@ -67,7 +67,7 @@
 				"type":type
 		}
 		
-		$.post("/getBlogsByType.action",params,function(data){
+		$.post("${pageContext.request.contextPath}/getBlogsByType.action",params,function(data){
 			isNetWork = false;
 			var result = JSON.parse(data);
 			if(result.code==code_success){
@@ -138,7 +138,7 @@
 	
 	
 	function toBlogDetail(id){
-		location.href = "/ui_redArticle?id="+id;
+		location.href = "${pageContext.request.contextPath}/ui_redArticle?id="+id;
 	}
 </script>
 </head>

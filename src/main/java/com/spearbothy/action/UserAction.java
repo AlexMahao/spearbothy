@@ -1,6 +1,8 @@
 package com.spearbothy.action;
 
+import java.beans.Encoder;
 import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.HashMap;
 
@@ -97,4 +99,23 @@ public class UserAction extends BaseAction implements ModelDriven<RUser> {
 		writeJson(result);
 	}
 	
+	/**
+	 * 支持单点登录
+	 */
+	@Action("/getLoginInfo")
+	public void getLoginInfo(){
+		/*HashMap<String, String> result = new HashMap<>();
+		// 获取用户信息的cookie
+		Cookie[] cookies = ServletActionContext.getRequest().getCookies();
+		for(Cookie cookie : cookies){
+			if(cookie.getName().equals("user")){
+				User user = JSON.parseObject(URLDecoder.decode(cookie.getValue()),User.class);
+				result.put("isLogin", "1");
+				result.put("nickName", )
+			}
+		}
+		
+		result.put("isLogin", "0");*/
+		
+	}
 }

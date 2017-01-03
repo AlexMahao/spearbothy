@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/base.css" />
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/index.scss">
+	href="${pageContext.request.contextPath}/css/index.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.3.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/alert.js"></script>
@@ -36,7 +36,7 @@
 			"page" : 1,
 			"rows" : 4
 		};
-		$.post("/findBlogs", params, function(data) {
+		$.post("${pageContext.request.contextPath}/findBlogs", params, function(data) {
 			var result = JSON.parse(data);
 			if (result.code == code_success) {
 				var blogs = result.data;

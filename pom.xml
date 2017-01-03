@@ -180,8 +180,8 @@
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<configuration>
 					
-					<url>http://localhost:8080/manager/text</url>
-					<server>tomcat</server>
+					<url>http://101.200.57.2:80/manager/text</url>
+					
 					<username>admin</username> 
 					<password>password</password>
 					<path>/spearbothy</path> 

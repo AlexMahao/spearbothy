@@ -36,6 +36,19 @@ public class BaseAction extends ActionSupport implements RequestAware, SessionAw
 		}
 	}
 	
+	public void writeJsonp(Object object) {
+		try {
+			String json = JSON.toJSONString(object, new SimplePropertyFilter());
+			ServletActionContext.getResponse().setContentType("text/html;charset=utf-8");
+			ServletActionContext.getResponse().getWriter().write(ServletActionContext.getRequest().getParameter("callback")+"("+json+")");
+			System.out.println("======服务器响应数据=====\n"+json+"\n==========\n");
+			ServletActionContext.getResponse().getWriter().flush();
+			ServletActionContext.getResponse().getWriter().close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	
 
 	public Map<String, Object> getRequest() {

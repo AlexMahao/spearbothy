@@ -12,7 +12,7 @@
 						if (user == null) {
 							$(".header_login")
 									.html(
-											"<a href='ui_login'>登陆</a><label>|</label> <a href='ui_register'>注册</a>")
+											"<a href='ui_login'>登陆</a><label>|</label> <a href='javascript:toRegister()'>注册</a>")
 						} else {
 							$(".header_login")
 									.html(
@@ -30,6 +30,10 @@
 	function toedit() {
 
 		location.href = "/meditor/meditor.jsp";
+	}
+	
+	function tipRegister(){
+		$.alert("暂不支持注册");
 	}
 </script>
 
@@ -62,7 +66,7 @@
 	<div class="top">
 		<div class="head_content">
 			<div class="header_login">
-				<a href="/ui_login">登陆</a><label>|</label> <a href="/ui_register">注册</a>
+				<a href="/ui_login">登陆</a><label>|</label> <a href="javascript:tipRegister()">注册</a>
 			</div>
 		</div>
 	</div>
