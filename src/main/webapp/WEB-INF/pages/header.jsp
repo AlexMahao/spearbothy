@@ -76,8 +76,8 @@
 			<li><a href="ui_index">首页</a></li>
 			<li><a href="ui_list?type=java">JAVA</a></li>
 			<li><a href="ui_list?type=android">Android</a></li>
-			<li><a href="about.asp">IOS</a></li>
-			<li><a href="about.asp">心语心情</a></li>
+			<li><a href="ui_list?type=ios">IOS</a></li>
+			<li><a href="ui_list?type=breast">心语心情</a></li>
 			<li><a href="ui_soul">网站介绍</a></li>
 			<li><a href="about.asp">留言</a></li>
 		</ul>

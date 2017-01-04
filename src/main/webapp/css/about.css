@@ -42,6 +42,7 @@
 	height: 50px;
 	border-bottom: 1px solid #ccc;
 	line-height: 49px;
+	margin-top: 20px;
 }
 
 .title h2{
@@ -54,11 +55,13 @@
     border-bottom: 1px solid #ff6a25;
 }
 
+
+
 .con{
 	margin-top: 10px;
     text-indent: 30px;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 30px;
     color: #696969;
-    font-size: 16px;
+  
 }

@@ -2,7 +2,14 @@ package com.spearbothy.action;
 
 import org.apache.struts2.convention.annotation.Action;
 
-public class CommentAction extends BaseAction {
+import com.opensymphony.xwork2.ModelDriven;
+
+/**
+ * 嵌入网易云跟帖 数据
+ * @author Alex_MaHao
+ *
+ */
+public class CommentAction extends BaseAction implements ModelDriven<WYBean> {
 	
 	@Action("notifyComment")
 	public void notifyComment(){

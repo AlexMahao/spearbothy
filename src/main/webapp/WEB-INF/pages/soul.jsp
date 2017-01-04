@@ -21,6 +21,7 @@
 		// 初始化动画
 		//$("p:first").fadeIn("slow");
 		/*alert($("p").size());*/
+		fadeIn();
 		setInterval(fadeIn,1000);
 	});
 
