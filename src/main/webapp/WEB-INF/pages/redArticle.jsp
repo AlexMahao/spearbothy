@@ -61,7 +61,7 @@
 		<div id="md" class="markdown-body editormd-preview-container"></div>
 	</div>
 
-<div id="cloud-tie-wrapper" style="width: 800px;margin: auto;" class="cloud-tie-wrapper"></div>
+<div id="cloud-tie-wrapper" style="width:60%;margin: auto;" class="cloud-tie-wrapper"></div>
 <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
 <script>
 		var cloudTieConfig = {

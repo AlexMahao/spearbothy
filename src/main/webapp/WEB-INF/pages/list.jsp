@@ -33,6 +33,13 @@
 		// 请求分页数据
 		type = getQueryString("type");
 		
+		if(type=="android"){
+			$(".head_content ul li a:eq(2)").addClass("active");
+		}else if(type=="java"){
+			$(".head_content ul li a:eq(1)").addClass("active");
+		}
+		
+		
 		getBlogType();
 		
 		

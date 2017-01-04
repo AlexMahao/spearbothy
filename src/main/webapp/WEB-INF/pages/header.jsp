@@ -12,7 +12,7 @@
 						if (user == null) {
 							$(".header_login")
 									.html(
-											"<a href='ui_login'>登陆</a><label>|</label> <a href='javascript:toRegister()'>注册</a>")
+											"<a href='ui_login'>登陆</a><label>|</label> <a href='javascript:tipRegister()'>注册</a>")
 						} else {
 							$(".header_login")
 									.html(
@@ -78,7 +78,7 @@
 			<li><a href="ui_list?type=android">Android</a></li>
 			<li><a href="about.asp">IOS</a></li>
 			<li><a href="about.asp">心语心情</a></li>
-			<li><a href="about.asp">关于我们</a></li>
+			<li><a href="ui_soul">网站介绍</a></li>
 			<li><a href="about.asp">留言</a></li>
 		</ul>
 

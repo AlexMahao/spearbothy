@@ -23,6 +23,8 @@
 		requestList("android");
 		
 		requestList("java");
+		
+		$(".head_content ul li a:eq(0)").addClass("active");
 	})
 
 	function toBlogDetail(id){
@@ -86,15 +88,11 @@
 
 	<div id="index_content">
 
-
-
 		<div class="java">
 			<div class="left">
 				<span>JAVA</span>
-
 			</div>
 			<div class="right">
-				
 
 			</div>
 		</div>
