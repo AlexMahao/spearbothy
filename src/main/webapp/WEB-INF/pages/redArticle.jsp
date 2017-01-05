@@ -61,7 +61,7 @@
 		<div id="md" class="markdown-body editormd-preview-container"></div>
 	</div>
 
-<div id="cloud-tie-wrapper" style="width:60%;margin: auto;" class="cloud-tie-wrapper"></div>
+<%-- <div id="cloud-tie-wrapper" style="width:60%;margin: auto;" class="cloud-tie-wrapper"></div>
 <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
 <script>
 		var cloudTieConfig = {
@@ -71,6 +71,21 @@
 		};
 		var yunManualLoad = true;
 		Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true);
-</script>
+</script> --%>
+<div class="ds-thread" data-thread-key="javascript:getQueryString('id')" data-title="请替换成文章的标题" data-url="javascript:location.href"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"spearbothy"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+
 </body>
 </html>

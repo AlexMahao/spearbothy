@@ -9,7 +9,7 @@ import com.opensymphony.xwork2.ModelDriven;
  * @author Alex_MaHao
  *
  */
-public class CommentAction extends BaseAction implements ModelDriven<WYBean> {
+public class CommentAction extends BaseAction  {
 	
 	@Action("notifyComment")
 	public void notifyComment(){
