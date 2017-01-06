@@ -11,6 +11,7 @@ import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.opensymphony.xwork2.ActionSupport;
 import com.spearbothy.util.SimplePropertyFilter;
 
@@ -25,7 +26,7 @@ public class BaseAction extends ActionSupport implements RequestAware, SessionAw
 
 	public void writeJson(Object object) {
 		try {
-			String json = JSON.toJSONString(object, new SimplePropertyFilter());
+			String json = JSON.toJSONString(object, new SimplePropertyFilter(),SerializerFeature.DisableCircularReferenceDetect);
 			ServletActionContext.getResponse().setContentType("text/html;charset=utf-8");
 			ServletActionContext.getResponse().getWriter().write(json);
 			System.out.println("======服务器响应数据=====\n"+json+"\n==========\n");

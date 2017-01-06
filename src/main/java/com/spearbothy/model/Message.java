@@ -1,5 +1,6 @@
 package com.spearbothy.model;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -31,6 +32,9 @@ public class Message {
 	
 	@Column(name="content_desc")
 	private String contentDesc;
+	
+	@Column(name="create_time",nullable=true,columnDefinition="timestamp default current_timestamp")
+	private Date createTime;
 	
 	
 	@OneToMany(mappedBy="message",cascade=CascadeType.ALL,fetch=FetchType.LAZY)

@@ -32,6 +32,10 @@ public class SimplePropertyFilter implements PropertyFilter {
 	        return false;
 	      }
 	    }
+	    
+	    if("password".equals(name)){
+	    	return false;
+	    }
 	    return true;
 	  }
 

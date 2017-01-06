@@ -66,6 +66,12 @@ public class User implements Serializable {
 		this.email = email;
 		this.registerTime = registerTime;
 	}
+	
+	public User(String id,String name){
+		super();
+		this.id = id;
+		this.name = name;
+	}
 
 	public Set<Message> getMessages() {
 		return messages;

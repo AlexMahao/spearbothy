@@ -1,5 +1,6 @@
 package com.spearbothy.model;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,6 +13,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+
+
 
 @Entity
 @Table(name="t_comment")
@@ -28,13 +32,18 @@ public class Comment {
 	@Column(name="comment_content")
 	private String commentContent;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+
+	@Column(name="create_time",nullable=true,columnDefinition="timestamp default current_timestamp")
+	private Date createTime;
+	
+	
+	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	@JoinColumn(name="user_id")
 	private User user;
 	
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="comment_type_id")
-	private CommentType commentType;
+	private CommentType commentType; // 类型，指当前评论的目标对象，包含博客，资源，留言，评论
 	
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="comment_id")
@@ -56,8 +65,27 @@ public class Comment {
 	@JoinColumn(name="breast_id")
 	private Breast breast;
 	
-	@OneToMany(mappedBy="comment",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="comment",cascade=CascadeType.ALL)
 	private Set<Comment> comments = new HashSet<>();
+
+	 
+	
+	
+	public Comment() {
+		super();
+	}
+
+	public Comment(String id, String commentDesc, String commentContent, Date createTime, User user,
+			CommentType commentType, Set<Comment> comments) {
+		super();
+		this.id = id;
+		this.commentDesc = commentDesc;
+		this.commentContent = commentContent;
+		this.createTime = createTime;
+		this.user = user;
+		this.commentType = commentType;
+		this.comments = comments;
+	}
 
 	public String getId() {
 		return id;
@@ -145,6 +173,14 @@ public class Comment {
 
 	public void setMessage(Message message) {
 		this.message = message;
+	}
+
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
 	}
 	
 	
