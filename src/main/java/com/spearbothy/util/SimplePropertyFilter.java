@@ -36,6 +36,10 @@ public class SimplePropertyFilter implements PropertyFilter {
 	    if("password".equals(name)){
 	    	return false;
 	    }
+	    
+	    if("comment".equals(name)){
+	    	return false;
+	    }
 	    return true;
 	  }
 

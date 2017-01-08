@@ -12,4 +12,6 @@ public interface CommentService {
 
 	List<Comment> getMessages(String type) throws BaseException;
 
+	void leaveComment(RComment mRComment) throws BaseException;
+
 }

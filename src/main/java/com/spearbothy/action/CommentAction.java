@@ -54,16 +54,42 @@ public class CommentAction extends BaseAction implements ModelDriven<RComment> {
 		// 回写数据
 		writeJson(result);
 	}
+	
+	@Action("leaveComment")
+	public void leaveComment() {
+		// 留言功能的实现
+		ResultResponse<String> result = new ResultResponse<>();
+
+		if (StringUtils.isEmpty(mRComment.getUserId()) || StringUtils.isEmpty(mRComment.getContent())
+				|| StringUtils.isEmpty(mRComment.getContentDesc()) || StringUtils.isEmpty(mRComment.getCommentType())
+				||StringUtils.isEmpty(mRComment.getId())) {
+			// 所传参数不足
+			System.out.println(mRComment);
+			
+			result.setToastMsg("请求参数不合法");
+		} else {
+			try {
+				commentService.leaveComment(mRComment);
+				result.setSuccessDate("");
+			} catch (BaseException e) {
+				result.setToastMsg(e.getMessage());
+			}
+		}
+		// 回写数据
+		writeJson(result);
+	}
+	
 
 	@Action("getMessages")
 	public void getMessages() {
-		// 获取所有的留言
+		// 获取所有的留言s
 		ResultResponse<List<Comment>> result = new ResultResponse<>();
 
 		String type = mRComment.getCommentType();
 
 		if (StringUtils.isEmpty(type)) {
 			result.setToastMsg("请求参数不合法");
+		
 		} else {
 			try {
 				List<Comment> comments = commentService.getMessages(type);

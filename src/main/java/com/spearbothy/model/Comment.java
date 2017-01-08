@@ -45,27 +45,27 @@ public class Comment {
 	@JoinColumn(name="comment_type_id")
 	private CommentType commentType; // 类型，指当前评论的目标对象，包含博客，资源，留言，评论
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	@JoinColumn(name="comment_id")
 	private Comment comment;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	@JoinColumn(name="resource_id")
 	private Resource resource;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	@JoinColumn(name="blog_id")
 	private Blog blog;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	@JoinColumn(name="message_id")
 	private Message message;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	@JoinColumn(name="breast_id")
 	private Breast breast;
 	
-	@OneToMany(mappedBy="comment",cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="comment",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	private Set<Comment> comments = new HashSet<>();
 
 	 
@@ -181,6 +181,14 @@ public class Comment {
 
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
+	}
+
+	@Override
+	public String toString() {
+		return "Comment [id=" + id + ", commentDesc=" + commentDesc + ", commentContent=" + commentContent
+				+ ", createTime=" + createTime + ", user=" + user + ", commentType=" + commentType + ", comment="
+				+ comment + ", resource=" + resource + ", blog=" + blog + ", message=" + message + ", breast=" + breast
+				+ ", comments=" + comments + "]";
 	}
 	
 	

@@ -34,11 +34,13 @@
 			$(obj).css("color", "#333");
 
 			$parent
-					.append("<div class='commit'><div class='avatar'><img src='${pageContext.request.contextPath}/image/no_avatar.jpg'></img></div><div class='text'><div class='form'><textarea placeholder='说的什么吧'></textarea></div><p><input class='submit' type='button' value='提交'/></p></div></div>");
+					.append("<div class='commit'><div class='avatar'><img src='${pageContext.request.contextPath}/image/no_avatar.jpg'></img></div><div class='text'><form id='form'><div class='form'><textarea placeholder='说的什么吧'></textarea></div><p><input class='submit' onclick='leaveComment(this)' type='button' value='提交'/></p></form></div></div>");
 
 		}
 
 	}
+	
+	
 	
 	$("document").ready(function(){
 		
@@ -53,20 +55,10 @@
 				var array = result.data;
 				for(var i = 0 ; i<array.length;i++ ){
 					var message = array[i];
-					
-					var html = "<div class='message'><div class='avatar'><img src='${pageContext.request.contextPath}/image/no_avatar.jpg'></img></div>"
-							+"<div class='text'><p class='nickname'>"+message.user.name+"</p>"
-							+"<p class='main'>"+message.commentContent+"</p>"
-							+"<p class='hint'><span>"+message.createTime.substring(0,4)+"年"+message.createTime.substring(5,7)+"月"
-							+message.createTime.substring(5,7)+"日"+"</span>"
-							+"<a href='javascript:void(0)' onclick='replay(this)'><span class='icon_replay'></span>回复</a> <a href='#'><span class='icon_top'></span>顶</a> <a href='#'><span></span></a>"
-							+"</p></div></div>";
-					
+					var html = setCommentHTML(message);
 					$(".content_message").append(html);
+					setComment(message.comments,$(".content_message>.message:eq("+i+")"));
 				}
-				
-				
-				
 			} else if (result.code == code_toast) {
 				$.alert(result.msg);
 			}
@@ -74,7 +66,83 @@
 		});
 		
 	})
+	
+	
+	// 设置评论的和列表对象
+	function setComment(comments,$obj){
+		if(comments.length>0){
+			for(var i = 0 ; i<comments.length;i++ ){
+				message = comments[i];
+				//writeObj(message.user);
+				var shtml = setCommentHTML(message);
+				$obj.find(".text").append(shtml);
+				setComment(message.comments, $obj.find(".message:eq("+i+")"));
+				
+			}
+		}
+	}
+	
+	function writeObj(obj){ 
+		 var description = ""; 
+		 for(var i in obj){ 
+		 var property=obj[i]; 
+		 description+=i+" = "+property+"\n"; 
+		 } 
+		 alert(description); 
+		} 
+	
+	
+	function setCommentHTML(message){
+		return "<div class='message'><div class='avatar'><img src='${pageContext.request.contextPath}/image/no_avatar.jpg'></img></div>"
+		+"<div class='text' id='text'><p class='id' style='display:none'>"+message.id+"</p>"+"<p class='nickname'>"+message.user.name+"</p>"
+		+"<p class='main'>"+message.commentContent+"</p>"
+		+"<p class='hint'><span>"+message.createTime.substring(0,4)+"年"+message.createTime.substring(5,7)+"月"
+		+message.createTime.substring(5,7)+"日"+"</span>"
+		+"<a href='javascript:void(0)' onclick='replay(this)'><span class='icon_replay'></span>回复</a> <a href='#'><span class='icon_top'></span>顶</a> <a href='#'><span></span></a>"
+		+"</p></div></div>";
+	}
 
+	// 回复评论
+	function leaveComment(obj) {
+		$user = getUserFromCookie();
+
+		var $form = $(obj).parents("#form");
+		var content = $form.find("textarea").val();
+		var id = $form.parents("#text").find(".id").html();
+		
+		// 1， 判断用户是否登陆
+		if ($user == null) {
+			$.alert("您为登陆，暂时无法发表留言");
+			return;
+		}
+
+		if (content == "" || content == null) {
+			$.alert("请先输入留言在发表");
+			return;
+		}
+
+		var params = {
+			"userId" : getUserFromCookie().id,
+			"commentType" : "comment",
+			"id":id,
+			"content" : content,
+			"contentDesc" : "暂无描述"
+		};
+
+		$.post("${pageContext.request.contextPath}/leaveComment.action", params, function(data) {
+			// 获取相应结果
+			var result = JSON.parse(data);
+			if (result.code == code_success) {
+				 location.reload() ;
+			} else if (result.code == code_toast) {
+				$.alert(result.msg);
+			}
+
+		});
+
+	}
+	
+	
 	// 提交留言
 	function leaveMessage(obj) {
 		$user = getUserFromCookie();
@@ -134,6 +202,8 @@
 			</div>
 
 			<div class="text">
+			
+				
 				<p class="nickname">马昊</p>
 
 				<p class="main">这是评论的主体内容</p>
@@ -144,6 +214,9 @@
 						href="#"><span class="icon_top"></span>顶</a> <a href="#"><span></span></a>
 				</p>
 			</div> --%>
+		
+		<div><h1>留言板</h1></div>
+
 		<div class="content_message">
 		
 		</div>

@@ -42,7 +42,6 @@ public class CommentDao extends BaseDaoImpl<Comment> {
 		
 		comments = find(hql);
 		
-		
 		return comments;
 	}
 

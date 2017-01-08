@@ -9,6 +9,30 @@ public class RComment {
 	private String content;
 	
 	private String contentDesc;
+	
+	// 评论的id
+	private String id;
+	
+	
+	
+	
+	
+	
+	
+
+	@Override
+	public String toString() {
+		return "RComment [userId=" + userId + ", commentType=" + commentType + ", content=" + content + ", contentDesc="
+				+ contentDesc + ", id=" + id + "]";
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	public String getUserId() {
 		return userId;
