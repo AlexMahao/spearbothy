@@ -11,6 +11,7 @@ import org.apache.struts2.convention.annotation.Action;
 
 import com.alibaba.fastjson.JSON;
 import com.opensymphony.xwork2.ModelDriven;
+import com.spearbothy.dao.impl.CommentDao;
 import com.spearbothy.exception.BaseException;
 import com.spearbothy.model.Blog;
 import com.spearbothy.model.Comment;
@@ -34,8 +35,9 @@ public class CommentAction extends BaseAction implements ModelDriven<RComment> {
 		return mRComment;
 	}
 
-	@Action("leaveMessage")
-	public void leaveMessage() {
+	// 发表评论的方法
+	@Action("leaveComment")
+	public void leaveComment() {
 		// 留言功能的实现
 		ResultResponse<String> result = new ResultResponse<>();
 
@@ -43,29 +45,7 @@ public class CommentAction extends BaseAction implements ModelDriven<RComment> {
 				|| StringUtils.isEmpty(mRComment.getContentDesc()) || StringUtils.isEmpty(mRComment.getCommentType())) {
 			// 所传参数不足
 			result.setToastMsg("请求参数不合法");
-		} else {
-			try {
-				commentService.leaveMessage(mRComment);
-				result.setSuccessDate("");
-			} catch (BaseException e) {
-				result.setToastMsg(e.getMessage());
-			}
-		}
-		// 回写数据
-		writeJson(result);
-	}
-	
-	@Action("leaveComment")
-	public void leaveComment() {
-		// 留言功能的实现
-		ResultResponse<String> result = new ResultResponse<>();
-
-		if (StringUtils.isEmpty(mRComment.getUserId()) || StringUtils.isEmpty(mRComment.getContent())
-				|| StringUtils.isEmpty(mRComment.getContentDesc()) || StringUtils.isEmpty(mRComment.getCommentType())
-				||StringUtils.isEmpty(mRComment.getId())) {
-			// 所传参数不足
-			System.out.println(mRComment);
-			
+		} else if (!mRComment.getCommentType().equals(CommentDao.MESSAGE) && StringUtils.isEmpty(mRComment.getId())) {
 			result.setToastMsg("请求参数不合法");
 		} else {
 			try {
@@ -78,7 +58,6 @@ public class CommentAction extends BaseAction implements ModelDriven<RComment> {
 		// 回写数据
 		writeJson(result);
 	}
-	
 
 	@Action("getMessages")
 	public void getMessages() {
@@ -89,10 +68,12 @@ public class CommentAction extends BaseAction implements ModelDriven<RComment> {
 
 		if (StringUtils.isEmpty(type)) {
 			result.setToastMsg("请求参数不合法");
-		
+
+		} else if (!type.equals(CommentDao.MESSAGE) && StringUtils.isEmpty(mRComment.getId())) {
+			result.setToastMsg("请求参数不合法");
 		} else {
 			try {
-				List<Comment> comments = commentService.getMessages(type);
+				List<Comment> comments = commentService.getMessages(type, mRComment.getId());
 				result.setSuccessDate(comments);
 			} catch (BaseException e) {
 				e.printStackTrace();
@@ -102,6 +83,4 @@ public class CommentAction extends BaseAction implements ModelDriven<RComment> {
 		writeJson(result);
 	}
 
-
-	
 }

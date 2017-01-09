@@ -42,6 +42,10 @@ public class Blog {
 	@Column(name="browse_count")
 	private int browseCount;
 	
+	@Type(type="text")  
+	@Column(name="digest_content")
+	private String digestContent;
+	
 	@Column(name="comment_count")
 	private int commentCount;
 	
@@ -68,6 +72,14 @@ public class Blog {
 	
 	
 	
+	public String getDigestContent() {
+		return digestContent;
+	}
+
+	public void setDigestContent(String digestContent) {
+		this.digestContent = digestContent;
+	}
+
 	public Blog(String id, String title, String content, Date createTime, int browseCount,
 			int commentCount, Date lastEditTime, boolean isMarkdown, User user) {
 		super();
@@ -83,13 +95,14 @@ public class Blog {
 		this.user = user;
 	}
 
-	public Blog(String id, String title, int browseCount, int commentCount,Date createTime) {
+	public Blog(String id, String title, int browseCount, int commentCount,String  digestContent,Date createTime) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.browseCount = browseCount;
 		this.commentCount = commentCount;
 		this.createTime = createTime;
+		this.digestContent = digestContent;
 	}
 
 	public Blog() {

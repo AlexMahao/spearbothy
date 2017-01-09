@@ -17,7 +17,7 @@ public class MyStrutsFilter extends StrutsPrepareAndExecuteFilter {
 			FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) req;
 		String url = request.getRequestURI();         
-		System.out.println(url);         
+		System.out.println("======"+request.getRequestURL().toString());         
 		if (url.contains("/ueditor")) {             
 			chain.doFilter(req, res);         
 		}else{             

@@ -11,6 +11,8 @@
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/message.css">
 <link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/css/comment.css">
+<link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/header.css">
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/jquery-1.8.3.js"></script>
@@ -93,7 +95,7 @@
 	
 	
 	function setCommentHTML(message){
-		return "<div class='message'><div class='avatar'><img src='${pageContext.request.contextPath}/image/no_avatar.jpg'></img></div>"
+		return "<div class='message'><div class='avatar'><img src='"+getUserAvater(message.user.avater)+"'></img></div>"
 		+"<div class='text' id='text'><p class='id' style='display:none'>"+message.id+"</p>"+"<p class='nickname'>"+message.user.name+"</p>"
 		+"<p class='main'>"+message.commentContent+"</p>"
 		+"<p class='hint'><span>"+message.createTime.substring(0,4)+"年"+message.createTime.substring(5,7)+"月"
@@ -168,7 +170,7 @@
 			"contentDesc" : "暂无描述"
 		};
 
-		$.post("${pageContext.request.contextPath}/leaveMessage.action", params, function(data) {
+		$.post("${pageContext.request.contextPath}/leaveComment.action", params, function(data) {
 			// 获取相应结果
 			var result = JSON.parse(data);
 			if (result.code == code_success) {
@@ -225,8 +227,16 @@
 		<div class="commit">
 
 			<div class="avatar">
-				<img src="${pageContext.request.contextPath}/image/no_avatar.jpg"></img>
-
+				<img id="submitImg" src=""></img>
+				<script type="text/javascript">
+					var user = getUserFromCookie();
+					if(user==null){
+						$("#submitImg").attr("src","${pageContext.request.contextPath}/image/no_avatar.jpg")
+					}else{
+						$("#submitImg").attr("src",user.avater);
+					}
+					
+				</script>
 			</div>
 
 			<div class="text">
@@ -253,6 +263,7 @@
 
 	</div>
 
+<%@include file="bottom.jsp"%>
 
 </body>
 </html>

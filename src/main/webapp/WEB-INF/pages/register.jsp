@@ -88,6 +88,8 @@
 		</p>
 		<div></div>
 	</div>
+	<%@include file="bottom.jsp"%>
+	
 </body>
 
 </html>

@@ -13,15 +13,16 @@ public class UserDao extends BaseDaoImpl<User> {
 
 	/**
 	 * 根据用户名和密码查找用户
+	 * 
 	 * @param hql
 	 * @param username
 	 * @param password
 	 * @return
 	 */
-	public User getUserByNameAndPassword(String username,String password) {
-		Query q = this.getCurrentSession().createQuery("select new User(u.id,u.name,u.password,u.email,u.registerTime) from User u where name=:name and password=:password");
-		
-		q.setParameter("name",username);
+	public User getUserByNameAndPassword(String username, String password) {
+		Query q = this.getCurrentSession().createQuery("from User u where name=:name and password=:password");
+
+		q.setParameter("name", username);
 		q.setParameter("password", password);
 		List<User> l = q.list();
 		if (l != null && l.size() > 0) {
@@ -29,5 +30,23 @@ public class UserDao extends BaseDaoImpl<User> {
 		}
 		return null;
 	}
-	
+
+	/**
+	 * 获取对应用户
+	 * @param otype
+	 * @param openid
+	 * @return
+	 */
+	public User getUserByOtype(int otype, String openid) {
+		Query q = this.getCurrentSession().createQuery("from User u where u.otype=:otype and u.openid=:openid");
+
+		q.setParameter("otype", otype);
+		q.setParameter("openid", openid);
+		List<User> l = q.list();
+		if (l != null && l.size() > 0) {
+			return l.get(0);
+		}
+		return null;
+	}
+
 }

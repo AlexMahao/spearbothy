@@ -56,6 +56,17 @@ public class UserServiceImpl implements UserService {
 		return user;
 	}
 
+	@Override
+	public User register(User user) throws BaseException {
+		// 验证opend id是否存在
+		User userD = userDao.getUserByOtype(user.getOtype(), user.getOpenid());
+		if(userD==null){
+			user.setId(UUID.randomUUID().toString());
+			userDao.save(user);
+		}
+		return user;
+	}
+
 	
 
 	

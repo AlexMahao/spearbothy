@@ -15,6 +15,15 @@ function getUserFromCookie(){
 	}
 }
 
+function getUserAvater(data){
+
+	if(data==null||data==""){
+		return "${pageContext.request.contextPath}/image/no_avatar.jpg";
+	}else{
+		return data;
+	}
+}
+
 /**
  * 获取参数的值
  * @param name
@@ -26,5 +35,15 @@ function getQueryString(name) {
     if (r != null) return unescape(r[2]);  
     return null;  
 }  
+
+
+function writeObj(obj){ 
+	 var description = ""; 
+	 for(var i in obj){ 
+	 var property=obj[i]; 
+	 description+=i+" = "+property+"\n"; 
+	 } 
+	 alert(description); 
+	} 
 
 

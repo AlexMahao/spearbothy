@@ -11,37 +11,52 @@ import com.spearbothy.model.CommentType;
 
 /**
  * 评论的数据库操作
+ * 
+ * 查询博客就是查询博客 查询评论就是查询留言
+ * 
+ * 
  *
  */
 @Repository
 public class CommentDao extends BaseDaoImpl<Comment> {
 
-	/**
-	 * 根据类型和id获取
-	 * 
-	 * @param commentType
-	 * @return
-	 */
-	public List<Comment> getComment(String commentType, String id) {
-		/*String hql = "select new Comment(c.id,c.commentDesc,c.commentContent,c.createTime,new User(c.user.id,c.user.name),c.commentType,c.comments) "
-				+ " from Comment c where c.commentType.commentType = '" + commentType + "'";
-*/
-		String hql = " from Comment c where c.commentType.commentType = '" + commentType + "'";
+	public final static String BLOG = "blog";
+	public static final String MESSAGE = "message";
 
-		
-		List<Comment> comments;
-		
-		
-		if (commentType.equals("blog")) {
-			hql = " and c.blog.id = '" + id + "'";
-		} else if (commentType.equals("resource")) {
-			hql = " and c.resource.id = '" + id + "'";
-		} else if (commentType.equals("message")) {
-		
-		}
-		
-		comments = find(hql);
-		
+	public static final String RESOURCE = "resource";
+	public static final String COMMENT = "comment";
+
+	
+
+	public List<Comment> getBlogMessage(String id) {
+		String hql = " from Comment c where c.commentType.commentType = '" + BLOG + "'";
+		hql =hql+ " and c.blog.id = '" + id + "'  order by c.createTime";
+		System.out.println("-----"+hql);
+		List<Comment> comments = find(hql);
+
+		return comments;
+	}
+
+	public List<Comment> getMessage() {
+		String hql = " from Comment c where c.commentType.commentType = '" + MESSAGE + "' order by c.createTime";
+		List<Comment> comments = find(hql);
+		return comments;
+	}
+
+	/**
+	 * 评论无需做操作，级联查询查出
+	 * 
+	 * @param id
+	 * @return
+	 *//*
+	public List<Comment> getComment(String id) {
+		return null;
+	}*/
+
+	public List<Comment> getResourceMessage(String id) {
+		String hql = " from Comment c where c.commentType.commentType = '" + RESOURCE + "'";
+		hql =hql+ " and c.resource.id = '" + id + "' order by c.createTime";
+		List<Comment> comments = find(hql);
 		return comments;
 	}
 

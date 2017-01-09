@@ -119,6 +119,7 @@
 			</p>
 		</div>
 
+<%@include file="bottom.jsp"%>
 
 </body>
 </html>

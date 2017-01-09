@@ -54,18 +54,10 @@ public class UserAction extends BaseAction implements ModelDriven<RUser> {
 		} else {
 			try {
 				User user = userService.register(mRuser);
-				HashMap<String, String> map = new HashMap<>();
-				map.put("id", user.getId());
-				map.put("name", user.getName());
-				Cookie cookie = new Cookie("user", URLEncoder.encode(JSON.toJSONString(map), "UTF-8"));
-				cookie.setMaxAge(7 * 24 * 60 * 60);
-				ServletActionContext.getResponse().addCookie(cookie);
 				result.setCode(Code.SUCCESS);
 				result.setData(user);
 				result.setMsg("成功");
 				
-			} catch (UnsupportedEncodingException e) {
-				e.printStackTrace();
 			} catch (BaseException e) {
 				result.setCode(Code.TOAST_MESSAGE);
 				result.setMsg(e.getMessage());

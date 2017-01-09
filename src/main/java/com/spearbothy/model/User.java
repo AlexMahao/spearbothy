@@ -26,6 +26,18 @@ public class User implements Serializable {
 
 	@Column(name = "password", length = 32)
 	private String password; // 密码
+	
+	@Column(name="otype",columnDefinition="default 0")
+	private int otype;// 注册类型
+	
+	@Column(name="openid")
+	private String openid;// 用户在注册平台的唯一标示
+	
+	@Column(name="token")
+	private String token;// 标记
+	
+	@Column(name="avater")// 头像
+	private String avater;
 
 	@Column(name = "email", length = 32,unique=true)
 	private String email; // 邮箱地址
@@ -159,6 +171,40 @@ public class User implements Serializable {
 				+ registerTime + ", books=" + books + ", resources=" + resources + ", breasts=" + breasts
 				+ ", comments=" + comments + ", messages=" + messages + "]";
 	}
+
+	public int getOtype() {
+		return otype;
+	}
+
+	public void setOtype(int otype) {
+		this.otype = otype;
+	}
+
+	public String getOpenid() {
+		return openid;
+	}
+
+	public void setOpenid(String openid) {
+		this.openid = openid;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+
+	public String getAvater() {
+		return avater;
+	}
+
+	public void setAvater(String avater) {
+		this.avater = avater;
+	}
+	
+	
 
 
 }

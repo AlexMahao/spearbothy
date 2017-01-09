@@ -10,4 +10,6 @@ public interface UserService {
 	User register(RUser rUser) throws BaseException;
 
 	User login(RUser mRuser) throws BaseException;
+	
+	User register(User user) throws BaseException;
 }

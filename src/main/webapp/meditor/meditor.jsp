@@ -19,7 +19,7 @@
 				style="width: 80%; height: 50px; display: block; outline: none; border: none; padding-left: 20px; font-size: 30px; float: left;">
 			<select name='type' id="type" style='width:100px;height:30px;margin-top: 10px;font-size: 18px;' >
 				<option value="android" selected>Android</option>
-				<option value="ios">IOS</option>
+				<option value="server">Server</option>
 				<option value="java">JAVA</option>
 				<option value="breast">心语心情</option>
 			</select>
@@ -45,7 +45,7 @@
 				path : "lib/",
 				imageUpload : true,
 				imageFormats : [ "jpg", "jpeg", "gif", "png", "bmp", "webp" ],
-				imageUploadURL : "/uploadfile",
+				imageUploadURL : "${pageContext.request.contextPath}/uploadfile",
 				saveHTMLToTextarea : true,
 				toolbarIcons :function(){
 					return  [
@@ -72,7 +72,7 @@
 				// 1， 判断用户是否登陆
 				if($user==null){
 					$.alert('您未登陆，无法发表文章',function(){
-						  location.href = "/ui_index";
+						  location.href = "${pageContext.request.contextPath}/ui_index";
 					});
 					return;
 				}
@@ -95,12 +95,12 @@
 						"isMarkdown":true,
 						"mdContent":testEditor.getMarkdown()
 				};
-				$.post("/publishArticle.action",params,function(data){
+				$.post("${pageContext.request.contextPath}/publishArticle.action",params,function(data){
 					// 获取相应结果
 					var result = JSON.parse(data);
 					if(result.code==code_success){
 						$.alert(result.msg,function(){
-							location.href = "/ui_index";
+							location.href = "${pageContext.request.contextPath}/ui_index";
 						})
 					}else if(result.code==code_toast){
 						$.alert(result.msg);

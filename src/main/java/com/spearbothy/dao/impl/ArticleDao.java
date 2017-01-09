@@ -22,7 +22,7 @@ public class ArticleDao extends BaseDaoImpl<Blog> {
 		if (page == 0 && rows == 0) {
 			blogs = getAllBlogsByType(type);
 		} else {
-			String hql = "select new Blog(b.id,b.title,b.browseCount,b.commentCount,b.createTime)  from Blog b where b.resourceType.type='"
+			String hql = "select new Blog(b.id,b.title,b.browseCount,b.commentCount,b.digestContent,b.createTime)  from Blog b where b.resourceType.type='"
 					+ type + "' order by b.createTime";
 			blogs = find(hql, page, rows);
 		}
@@ -36,7 +36,7 @@ public class ArticleDao extends BaseDaoImpl<Blog> {
 	 * @return
 	 */
 	public List<Blog> getAllBlogsByType(String type){
-		String hql = "select new Blog(b.id,b.title,b.browseCount,b.commentCount,b.createTime)  from Blog b where b.resourceType.type='"
+		String hql = "select new Blog(b.id,b.title,b.browseCount,b.commentCount,b.digestContent,b.createTime)  from Blog b where b.resourceType.type='"
 				+ type + "' order by b.createTime";
 		return find(hql);
 	}

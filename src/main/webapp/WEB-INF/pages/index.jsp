@@ -10,7 +10,7 @@
 	href="${pageContext.request.contextPath}/css/base.css" />
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/index.css">
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.3.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/alert.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/base.js"></script>
@@ -24,6 +24,10 @@
 		
 		requestList("java");
 		
+		requestList("server");
+		
+		requestBreast();	
+	
 		$(".head_content ul li a:eq(0)").addClass("active");
 	})
 
@@ -31,13 +35,59 @@
 		location.href = "${pageContext.request.contextPath}/ui_redArticle?id="+id;
 	}
 	
+
+	function requestBreast() {
+		// 请求Android 的标题，评论次数，查看次数
+		
+		var params = {
+			"type" : "breast",
+			"page" : 1,
+			"rows" : 3
+		};
+
+		$.post("${pageContext.request.contextPath}/findBlogs", params, function(data) {
+			var result = JSON.parse(data);
+			if (result.code == code_success) {
+				var blogs = result.data;
+				var $list = $("#index_content_bottom");
+				var content = "";
+				for (var i = 0; i < blogs.length; i++) {
+					var blog = blogs[i];
+					
+					if(blog.digestContent.length>150){
+						blog.digestContent = blog.digestContent.substring(0,150)+"...";
+					}
+					content = content+"<div style=' cursor:pointer'><span style='display:none' >"+blog.id+"</span><p class='title'>心语心情</p><h3  class='title2'>"+blog.title+"</h3>"
+						+"<p class='c'>"+blog.digestContent+"</p></div>";
+				}
+
+				$list.html(content);
+				
+				 $("#index_content_bottom div").click(function(){
+					var id = $(this).children("span").first();
+					toBlogDetail(id.text());
+				}); 
+			} else if (result.code == code_toast) {
+				$.alert(result.msg);
+			}
+		});
+		
+	}
+	
+	
 	function requestList(type) {
 		// 请求Android 的标题，评论次数，查看次数
+		
+		
 		var params = {
 			"type" : type,
 			"page" : 1,
 			"rows" : 4
 		};
+		if(type=="server"){
+			params.rows = 3;
+		}
+		
 		$.post("${pageContext.request.contextPath}/findBlogs", params, function(data) {
 			var result = JSON.parse(data);
 			if (result.code == code_success) {
@@ -107,9 +157,9 @@
 
 
 
-		<div class="ios">
+		<div class="server">
 			<div class="left">
-				<span>IOS</span>
+				<span>Server</span>
 
 			</div>
 			<div class="right">
@@ -133,19 +183,9 @@
 
 
 	<div id="index_content_bottom">
-		<div>
-			<p class="title">心语心情</p>
-		</div>
-
-		<div>
-			<p class="title">心语心情</p>
-		</div>
-
-		<div>
-			<p class="title">心语心情</p>
-		</div>
-
 	</div>
+	
+<%@include file="bottom.jsp"%>
 
 </body>
 </html>
