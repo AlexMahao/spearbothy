@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
+<title>矛屋</title>
  <script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="101378506" data-redirecturi="http://spearbothy.com/spearbothy/notify" charset="utf-8"></script>
 
 <script type="text/javascript"
@@ -17,6 +17,17 @@
 	src="${pageContext.request.contextPath}/js/jquery.cookie.js"></script>
 
 <script type="text/javascript">
+	// 回调通知函数，首先通过ajax获取数据
+	
+	
+	$("document").ready(function(){
+		// 1，请求数据
+		
+		
+		
+	});
+
+
 	$("document").ready(function() {
 		if (QC.Login.check()) {
 			QC.api("get_user_info").success(function(s) {//成功回调
@@ -32,6 +43,7 @@
 					}, function(data, status) {
 						if (status == "success") {
 							alert(s.data.nickname + "恭喜你,登录成功!");
+							var result = JSON.parse(data);
 							$.cookie("user",encodeURI(JSON.stringify(result.data)));
 							location.href = "${pageContext.request.contextPath}/ui_index";
 						} else {
@@ -48,7 +60,7 @@
 			});
 		} else {
 			alert("请登录！");
-			/* location.href = "${pageContext.request.contextPath}/ui_index"; */
+			 location.href = "${pageContext.request.contextPath}/ui_index"; 
 		}
 
 	})

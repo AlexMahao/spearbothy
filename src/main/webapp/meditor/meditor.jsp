@@ -4,7 +4,7 @@
 
 <head>
 <meta charset="utf-8" />
-<title>Simple example - Editor.md examples</title>
+<title>发表博客</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/base.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/editormd.css" />
 	<script src="${pageContext.request.contextPath}/js/jquery-1.8.3.js"></script>
@@ -24,7 +24,8 @@
 				<option value="breast">心语心情</option>
 			</select>
 			<input
-				style="width: 80px; height: 50px; margin-left: 30px; float: right;"
+				style="    width: 60px;
+    height: 40px; margin-left: 30px; float: right;"
 			type="button" value="发表" onclick="submit()" />
 		</div>
 		<div id="test-editormd">

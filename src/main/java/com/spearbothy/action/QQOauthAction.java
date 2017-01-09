@@ -44,7 +44,7 @@ public class QQOauthAction extends BaseAction {
 			e.printStackTrace();
 		}
 		
-		writeJson(user);
+		writeJson(result);
 		
 	}
 	

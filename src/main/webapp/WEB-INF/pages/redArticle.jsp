@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>文章查看</title>
+<title>矛屋</title>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/base.js"></script>
 <link rel="stylesheet" type="text/css"

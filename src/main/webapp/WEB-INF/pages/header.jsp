@@ -11,13 +11,13 @@
 						if (user == null) {
 							$(".header_login")
 									.html(
-											"<a href='https://graph.qq.com/oauth/show?which=ConfirmPage&display=pc&response_type=code&client_id=101378506&redirect_uri=http://spearbothy.com/spearbothy/notify&scope=all'><img style='vertical-align: middle;margin-right: 10px;' src='${pageContext.request.contextPath}/image/qq.png'/></a><a href='ui_login'>登陆</a><label>|</label> <a href='javascript:tipRegister()'>注册</a>")
+											"<a href='https://graph.qq.com/oauth2.0/authorize?response_type=token&client_id=101378506&redirect_uri=http://spearbothy.com/notify&scope=all'><img style='vertical-align: middle;margin-right: 10px;' src='${pageContext.request.contextPath}/image/qq.png'/></a><a href='ui_login'>登陆</a><label>|</label> <a href='javascript:tipRegister()'>注册</a>")
 						} else {
 							$(".header_login")
 									.html(
 											"<span>欢迎 "
 													+ user.name
-													+ "</span><label>|</label><a href='javascript:toedit()'>写文章</a><label>|</label><a href='javascript:'>个人信息</a><label>|</label><a href='javascript:exit()'>退出登陆</a>");
+													+ "</span><label>|</label><a href='javascript:toedit()'>写文章</a><label>|</label><a href='javascript:exit()'>退出登陆</a>");
 						}
 					})
 					

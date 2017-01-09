@@ -38,8 +38,14 @@ public class AricleServiceImpl implements ArticleService {
 		// 发表文章
 		User user = userDao.get(User.class, rArticle.getUserid());
 
+		
+		
 		if (user == null) {
 			throw new BaseException("用户不合法");
+		}
+		
+		if(!user.getName().equals("马昊")){
+			throw new BaseException("暂不支持发表博客");
 		}
 
 		ResourceType resourceType = resourceTypeDao.getTypeByContent(rArticle.getType());

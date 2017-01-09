@@ -47,11 +47,11 @@
 		</interceptors>
 		<default-interceptor-ref name="myStack" />
 
-	<!-- 	<default-action-ref name="index"></default-action-ref>
+		<default-action-ref name="index"></default-action-ref>
 		
 		<action name="index">
 			<result type="dispatcher">/WEB-INF/pages/index.jsp</result>
-		</action> -->
+		</action>
 
 		<action name="ui_*">
 			<result>/WEB-INF/pages/{1}.jsp</result>

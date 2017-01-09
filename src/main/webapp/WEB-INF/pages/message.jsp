@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>关于我们</title>
+<title>矛屋</title>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/base.css" />
 <link rel="stylesheet" type="text/css"
