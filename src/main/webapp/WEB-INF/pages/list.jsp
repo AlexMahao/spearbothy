@@ -192,7 +192,8 @@ function biankuang1(obj){
 //触发
 
 </script>
-<%-- <%@include file="bottom.jsp"%> --%>
+
+<%@include file="bottom.jsp"%> 
 
 </body>
 </html>

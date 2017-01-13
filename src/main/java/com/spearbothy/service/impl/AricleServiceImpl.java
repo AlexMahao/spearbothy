@@ -60,7 +60,7 @@ public class AricleServiceImpl implements ArticleService {
 		blog.setMdContent(rArticle.getMdContent());
 		blog.setContent(rArticle.getContent());
 		blog.setTitle(rArticle.getTitle());
-
+		blog.setDigestContent(rArticle.getDigestContent());
 		articleDao.save(blog);
 
 		return blog;

@@ -25,6 +25,19 @@ public class RArticle {
 	
 	private String mdContent;
 	
+	private String digestContent;
+	
+	
+	
+	
+
+	public String getDigestContent() {
+		return digestContent;
+	}
+
+	public void setDigestContent(String digestContent) {
+		this.digestContent = digestContent;
+	}
 
 	public boolean isMarkdown() {
 		return isMarkdown;
