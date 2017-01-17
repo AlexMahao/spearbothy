@@ -18,7 +18,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/alert.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/base.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.cookie.js"></script>
-
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/animate.css">
 <script type="text/javascript">
 	$("document").ready(function() {
 		// 文档加载完毕之后，开始请求数据
@@ -128,13 +128,21 @@
 
                 <div id="large-header" class="banner" >
                     <canvas id="demo-canvas"></canvas>
-                    <p style="    position: relative;
-    top: -300px;
-    width: 1200px;
-    margin: 0 auto;
-    text-align: center;
-    color: white;
-    font-size: 30px;">这个地方应该放一句很励志的话，但还没想好</p>   
+                    <p class="mark animated swing">
+    
+  <span style="    font-size: 20px;
+    display: block;
+    position: absolute;
+    left: 300px;">我无畏青春 努力不懈而生存</span>
+<span style="position: absolute;
+    top: 40px;
+    left: 400px;">跌倒以后起身 淬炼刚强灵魂</span>
+<span style="position: absolute;
+    top: 80px;
+    left: 500px;">我无畏人生 或高或低的可能</span>
+<span style="position: absolute;
+    top: 120px;
+    left: 600px;">不带遗憾转身 直到梦想完成</span></p>   
                 </div>
 				<script src="${pageContext.request.contextPath}/js/canvas_banner.js"></script>         
 	</div>

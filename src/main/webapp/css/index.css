@@ -14,6 +14,25 @@ body {
 	background-image: url(../image/banner.jpg);
 }
 
+
+.mark{
+	    position: relative;
+    top: -300px;
+    width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+    font-size: 30px;
+}
+
+#index_center .mark span{
+	font-size: 20px;
+	display: block;
+}
+
+
+
+
 /* #index_center .banner p */
 
 /* #index_center .banner p:first-child{

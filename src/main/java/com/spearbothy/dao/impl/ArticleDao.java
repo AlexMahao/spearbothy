@@ -23,7 +23,7 @@ public class ArticleDao extends BaseDaoImpl<Blog> {
 			blogs = getAllBlogsByType(type);
 		} else {
 			String hql = "select new Blog(b.id,b.title,b.browseCount,b.commentCount,b.digestContent,b.createTime)  from Blog b where b.resourceType.type='"
-					+ type + "' order by b.createTime";
+					+ type + "' order by b.createTime desc";
 			blogs = find(hql, page, rows);
 		}
 		return blogs;

@@ -115,7 +115,7 @@
 			var bloghtml = bloghtml+"<div class='biankuang biankuang_4'></div>";
 			
 			
-			bloghtml = bloghtml+"<div class='left_date'>"+blog.createTime.substring(8,10)+"<span>Dec</span></div>";
+			bloghtml = bloghtml+"<div class='left_date'>"+blog.createTime.substring(8,10)+"<span>"+monthData[parseInt(blog.createTime.substring(6,8))]+"</span></div>";
 			
 			bloghtml = bloghtml +"<div class='left_detail'>";
 			bloghtml = bloghtml +"<div class='list_title'><a>"+blog.title+"</a></div>";
