@@ -63,8 +63,11 @@ public class UserServiceImpl implements UserService {
 		if(userD==null){
 			user.setId(UUID.randomUUID().toString());
 			userDao.save(user);
+			return user;
+		}else{
+			return userD;
 		}
-		return user;
+		
 	}
 
 	

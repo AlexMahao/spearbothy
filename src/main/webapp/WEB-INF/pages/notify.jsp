@@ -45,6 +45,7 @@
 					}, function(data, status) {
 						if (status == "success") {
 							alert(s.data.nickname + "恭喜你,登录成功!");
+						
 							var result = JSON.parse(data);
 							$.cookie("user",encodeURI(JSON.stringify(result.data)));
 							location.href = "${pageContext.request.contextPath}/ui_index";
