@@ -4,6 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="baidu-site-verification" content="qD58jpUDcB" />
+<meta name="keywords" content="博客，Android,Java,资源，论坛，开发者，程序员">
+<meta name="description" content="个人博客，记录日常技术文章，心情文章。">
 <title>矛屋</title>
 
 <link rel="stylesheet" type="text/css"

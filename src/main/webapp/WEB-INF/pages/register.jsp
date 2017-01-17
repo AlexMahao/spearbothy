@@ -4,6 +4,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<meta name="keywords" content="博客，Android,Java,资源，论坛，开发者，程序员">
+<meta name="description" content="个人博客，记录日常技术文章，心情文章。">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>矛屋</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/base.css" />
